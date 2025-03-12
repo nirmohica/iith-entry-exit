@@ -1,22 +1,67 @@
 :root {
 	color-scheme: light dark;
 	--color-bg-primary: var(--base-00);
+	--input-bg-primary: var(--base-05);
+	--color-bg-secondary: var(--base-10);
+	--color-border-primary: var(--base-10);
+	--color-tx-muted: var(--base-30);
 	--font-default: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
 		--base-00: var(--flexoki-paper);
+		--base-05: var(--flexoki-50);
+		--base-10: var(--flexoki-100);
+
+		--base-10: var(--flexoki-100);
 	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-
+		--base-00: var(--flexoki-black);
+		--base-05: var(--flexoki-950);
+		--base-10: var(--flexoki-900);
+		--base-30: var(--flexoki-700);
 	}
 }
 
-// Flexoki
 :root {
+  font-size: 1rem;
+
+  /* size variables */
+  --size-md: 1em;
+  --size-factor: 1.618;
+
+  --size-sm: calc(var(--size-md) / var(--size-factor));
+  --size-xs: calc(var(--size-sm) / var(--size-factor));
+  --size-2xs: calc(var(--size-xs) / var(--size-factor));
+
+  --size-lg: calc(var(--size-md) * var(--size-factor));
+  --size-xl: calc(var(--size-lg) * var(--size-factor));
+  --size-2xl: calc(var(--size-xl) * var(--size-factor));
+
+
+  /* increments */
+  --step-whole: 1.618;
+  --step-half: 1.272;
+  --step-quarter: 1.128;
+  --step-eighth: 1.061;
+
+  --step-whole-dec: 0.618;
+  --step-half-dec: 0.272;
+  --step-quarter-dec: 0.128;
+  --step-eighth-dec: 0.061;
+
+
+  /* make text look sharper */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+
+
+
+	/* flexoki */
   --flexoki-black:           #100F0F;
   --flexoki-paper:           #FFFCF0;
 
@@ -145,4 +190,25 @@
   --flexoki-magenta-850:     #4F1B39;
   --flexoki-magenta-900:     #39172B;
   --flexoki-magenta-950:     #24131D;
+}
+
+.title-b {
+  --line-height-ems: calc(1em * var(--step-half));
+  --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
+  --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
+  --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
+  --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
+  --size-lg: calc(var(--line-height-ems) * var(--step-whole));
+  --size-xl: calc(var(--size-lg) * var(--step-whole));
+  --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
+  letter-spacing: -0.02em;
+}
+
+.font-title-b, .title-b h2 {
+	font-size: calc(1em * var(--step-whole));
+  font-weight: 500;
+  line-height: var(--step-half);
 }

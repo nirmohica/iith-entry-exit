@@ -1,515 +1,19 @@
-@charset "UTF-8";
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-}
-
-/* Sections
-   ========================================================================== */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the `main` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/* Grouping content
-   ========================================================================== */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Embedded content
-   ========================================================================== */
-/**
- * Remove the border on images inside links in IE 10.
- */
-img {
-  border-style: none;
-}
-
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
-}
-
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-button,
-input { /* 1 */
-  overflow: visible;
-}
-
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-button,
-select { /* 1 */
-  text-transform: none;
-}
-
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-}
-
-/**
- * Remove the inner border and padding in Firefox.
- */
-button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-/**
- * Restore the focus styles unset by the previous rule.
- */
-button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-/**
- * Correct the padding in Firefox.
- */
-fieldset {
-  padding: 0.35em 0.75em 0.625em;
-}
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-[type=checkbox],
-[type=radio] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type=search] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/* Interactive
-   ========================================================================== */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/* Misc
-   ========================================================================== */
-/**
- * Add the correct display in IE 10+.
- */
-template {
-  display: none;
-}
-
-/**
- * Add the correct display in IE 10.
- */
-[hidden] {
-  display: none;
-}
-
-:root {
-  color-scheme: light dark;
-  --color-bg-primary: var(--base-00);
-  --input-bg-primary: var(--base-05);
-  --color-bg-secondary: var(--base-10);
-  --color-border-primary: var(--base-10);
-  --color-tx-muted: var(--base-30);
-  --font-default: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --base-00: var(--flexoki-paper);
-    --base-05: var(--flexoki-50);
-    --base-10: var(--flexoki-100);
-    --base-10: var(--flexoki-100);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --base-00: var(--flexoki-black);
-    --base-05: var(--flexoki-950);
-    --base-10: var(--flexoki-900);
-    --base-30: var(--flexoki-700);
-  }
-}
-:root {
-  font-size: 1rem;
-  /* size variables */
-  --size-md: 1em;
-  --size-factor: 1.618;
-  --size-sm: calc(var(--size-md) / var(--size-factor));
-  --size-xs: calc(var(--size-sm) / var(--size-factor));
-  --size-2xs: calc(var(--size-xs) / var(--size-factor));
-  --size-lg: calc(var(--size-md) * var(--size-factor));
-  --size-xl: calc(var(--size-lg) * var(--size-factor));
-  --size-2xl: calc(var(--size-xl) * var(--size-factor));
-  /* increments */
-  --step-whole: 1.618;
-  --step-half: 1.272;
-  --step-quarter: 1.128;
-  --step-eighth: 1.061;
-  --step-whole-dec: 0.618;
-  --step-half-dec: 0.272;
-  --step-quarter-dec: 0.128;
-  --step-eighth-dec: 0.061;
-  /* make text look sharper */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-smooth: never;
-  /* flexoki */
-  --flexoki-black: #100F0F;
-  --flexoki-paper: #FFFCF0;
-  --flexoki-50: #F2F0E5;
-  --flexoki-100: #E6E4D9;
-  --flexoki-150: #DAD8CE;
-  --flexoki-200: #CECDC3;
-  --flexoki-300: #B7B5AC;
-  --flexoki-400: #9F9D96;
-  --flexoki-500: #878580;
-  --flexoki-600: #6F6E69;
-  --flexoki-700: #575653;
-  --flexoki-800: #403E3C;
-  --flexoki-850: #343331;
-  --flexoki-900: #282726;
-  --flexoki-950: #1C1B1A;
-  --flexoki-red-50: #FFE1D5;
-  --flexoki-red-100: #FFCABB;
-  --flexoki-red-150: #FDB2A2;
-  --flexoki-red-200: #F89A8A;
-  --flexoki-red-300: #E8705F;
-  --flexoki-red-400: #D14D41;
-  --flexoki-red-500: #C03E35;
-  --flexoki-red-600: #AF3029;
-  --flexoki-red-700: #942822;
-  --flexoki-red-800: #6C201C;
-  --flexoki-red-850: #551B18;
-  --flexoki-red-900: #3E1715;
-  --flexoki-red-950: #261312;
-  --flexoki-orange-50: #FFE7CE;
-  --flexoki-orange-100: #FED3AF;
-  --flexoki-orange-150: #FCC192;
-  --flexoki-orange-200: #F9AE77;
-  --flexoki-orange-300: #EC8B49;
-  --flexoki-orange-400: #DA702C;
-  --flexoki-orange-500: #CB6120;
-  --flexoki-orange-600: #BC5215;
-  --flexoki-orange-700: #9D4310;
-  --flexoki-orange-800: #71320D;
-  --flexoki-orange-850: #59290D;
-  --flexoki-orange-900: #40200D;
-  --flexoki-orange-950: #27180E;
-  --flexoki-yellow-50: #FAEEC6;
-  --flexoki-yellow-100: #F6E2A0;
-  --flexoki-yellow-150: #F1D67E;
-  --flexoki-yellow-200: #ECCB60;
-  --flexoki-yellow-300: #DFB431;
-  --flexoki-yellow-400: #D0A215;
-  --flexoki-yellow-500: #BE9207;
-  --flexoki-yellow-600: #AD8301;
-  --flexoki-yellow-700: #8E6B01;
-  --flexoki-yellow-800: #664D01;
-  --flexoki-yellow-850: #503D02;
-  --flexoki-yellow-900: #3A2D04;
-  --flexoki-yellow-950: #241E08;
-  --flexoki-green-50: #EDEECF;
-  --flexoki-green-100: #DDE2B2;
-  --flexoki-green-150: #CDD597;
-  --flexoki-green-200: #BEC97E;
-  --flexoki-green-300: #A0AF54;
-  --flexoki-green-400: #879A39;
-  --flexoki-green-500: #768D21;
-  --flexoki-green-600: #66800B;
-  --flexoki-green-700: #536907;
-  --flexoki-green-800: #3D4C07;
-  --flexoki-green-850: #313D07;
-  --flexoki-green-900: #252D09;
-  --flexoki-green-950: #1A1E0C;
-  --flexoki-cyan-50: #DDF1E4;
-  --flexoki-cyan-100: #BFE8D9;
-  --flexoki-cyan-150: #A2DECE;
-  --flexoki-cyan-200: #87D3C3;
-  --flexoki-cyan-300: #5ABDAC;
-  --flexoki-cyan-400: #3AA99F;
-  --flexoki-cyan-500: #2F968D;
-  --flexoki-cyan-600: #24837B;
-  --flexoki-cyan-700: #1C6C66;
-  --flexoki-cyan-800: #164F4A;
-  --flexoki-cyan-850: #143F3C;
-  --flexoki-cyan-900: #122F2C;
-  --flexoki-cyan-950: #101F1D;
-  --flexoki-blue-50: #E1ECEB;
-  --flexoki-blue-100: #C6DDE8;
-  --flexoki-blue-150: #ABCFE2;
-  --flexoki-blue-200: #92BFDB;
-  --flexoki-blue-300: #66A0C8;
-  --flexoki-blue-400: #4385BE;
-  --flexoki-blue-500: #3171B2;
-  --flexoki-blue-600: #205EA6;
-  --flexoki-blue-700: #1A4F8C;
-  --flexoki-blue-800: #163B66;
-  --flexoki-blue-850: #133051;
-  --flexoki-blue-900: #12253B;
-  --flexoki-blue-950: #101A24;
-  --flexoki-purple-50: #F0EAEC;
-  --flexoki-purple-100: #E2D9E9;
-  --flexoki-purple-150: #D3CAE6;
-  --flexoki-purple-200: #C4B9E0;
-  --flexoki-purple-300: #A699D0;
-  --flexoki-purple-400: #8B7EC8;
-  --flexoki-purple-500: #735EB5;
-  --flexoki-purple-600: #5E409D;
-  --flexoki-purple-700: #4F3685;
-  --flexoki-purple-800: #3C2A62;
-  --flexoki-purple-850: #31234E;
-  --flexoki-purple-900: #261C39;
-  --flexoki-purple-950: #1A1623;
-  --flexoki-magenta-50: #FEE4E5;
-  --flexoki-magenta-100: #FCCFDA;
-  --flexoki-magenta-150: #F9B9CF;
-  --flexoki-magenta-200: #F4A4C2;
-  --flexoki-magenta-300: #E47DA8;
-  --flexoki-magenta-400: #CE5D97;
-  --flexoki-magenta-500: #B74583;
-  --flexoki-magenta-600: #A02F6F;
-  --flexoki-magenta-700: #87285E;
-  --flexoki-magenta-800: #641F46;
-  --flexoki-magenta-850: #4F1B39;
-  --flexoki-magenta-900: #39172B;
-  --flexoki-magenta-950: #24131D;
-}
-
-.title-b {
-  --line-height-ems: calc(1em * var(--step-half));
-  --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
-  --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
-  --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
-  --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
-  --size-lg: calc(var(--line-height-ems) * var(--step-whole));
-  --size-xl: calc(var(--size-lg) * var(--step-whole));
-  --size-2xl: calc(var(--size-xl) * var(--step-whole));
-  letter-spacing: -0.02em;
-}
-
-.font-title-b, .title-b h2 {
-  font-size: calc(1em * var(--step-whole));
-  font-weight: 500;
-  line-height: var(--step-half);
-}
 
 /* Regular families */
 .display1 {
   --line-height-ems: calc(1em * var(--step-quarter));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-sm: calc(var(--line-height-ems) * calc(1 / var(--step-half)))
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-whole) * var(--step-whole));
   font-weight: 400;
@@ -519,12 +23,15 @@ template {
 .display2 {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-whole));
   font-weight: 400;
@@ -534,12 +41,15 @@ template {
 .title1 {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-half));
   font-weight: 400;
@@ -549,12 +59,15 @@ template {
 .title2 {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.02em;
   font-size: calc(1em * var(--step-whole));
   font-weight: 400;
@@ -564,12 +77,15 @@ template {
 .title3 {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.017em;
   font-size: calc(1em * var(--step-half));
   font-weight: 400;
@@ -579,12 +95,15 @@ template {
 .heading {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.014em;
   font-size: calc(1em * var(--step-quarter));
   font-weight: 600;
@@ -594,12 +113,15 @@ template {
 .subheading {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.007em;
   font-size: calc(1em / var(--step-quarter));
   font-weight: 400;
@@ -612,9 +134,11 @@ template {
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--base) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.011em;
   cursor: default;
   font-size: 1em;
@@ -625,12 +149,15 @@ template {
 .callout {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.009em;
   font-size: calc(1em / var(--step-eighth));
   font-weight: 400;
@@ -640,14 +167,17 @@ template {
 .label {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.004em;
-  font-size: calc(1em / var(--step-quarter) / var(--step-eighth));
+  font-size: calc((1em / var(--step-quarter)) / var(--step-eighth));
   font-weight: 600;
   line-height: var(--step-half);
   position: static;
@@ -657,12 +187,15 @@ template {
 .caption {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.007em;
   font-size: calc(1em / var(--step-half));
   font-weight: 400;
@@ -672,12 +205,15 @@ template {
 .overline {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: 0.0618em;
   text-transform: uppercase;
   font-size: calc(1em / var(--step-half));
@@ -686,15 +222,18 @@ template {
 }
 
 /* Bold Families */
+
 .display1__bold {
   --line-height-ems: calc(1em * var(--step-quarter));
   --size-md: calc(var(--base) / var(--step-whole));
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--base) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-whole) * var(--step-whole));
   font-weight: 700;
@@ -704,12 +243,15 @@ template {
 .display2__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-whole));
   font-weight: 700;
@@ -719,12 +261,15 @@ template {
 .title1__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.022em;
   font-size: calc(1em * var(--step-whole) * var(--step-half));
   font-weight: 600;
@@ -734,12 +279,15 @@ template {
 .title2__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.02em;
   font-size: calc(1em * var(--step-whole));
   font-weight: 600;
@@ -749,12 +297,15 @@ template {
 .title3__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.017em;
   font-size: calc(1em * var(--step-half));
   font-weight: 600;
@@ -764,12 +315,15 @@ template {
 .heading__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.014em;
   font-size: calc(1em * var(--step-quarter));
   font-weight: 700;
@@ -779,12 +333,15 @@ template {
 .subheading__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.007em;
   font-size: calc(1em / var(--step-quarter));
   font-weight: 600;
@@ -797,9 +354,11 @@ template {
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--base) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.011em;
   padding: 0;
   font-size: 1em;
@@ -811,12 +370,15 @@ template {
 .callout__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.009em;
   font-size: calc(1em / var(--step-eighth));
   font-weight: 600;
@@ -827,14 +389,17 @@ template {
 .label__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.004em;
-  font-size: calc(1em / var(--step-quarter) / var(--step-eighth));
+  font-size: calc((1em / var(--step-quarter)) / var(--step-eighth));
   font-weight: 700;
   line-height: var(--step-half);
 }
@@ -842,12 +407,15 @@ template {
 .caption__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: -0.007em;
   font-size: calc(1em / var(--step-half));
   font-weight: 600;
@@ -857,12 +425,15 @@ template {
 .overline__bold {
   --line-height-ems: calc(1em * var(--step-half));
   --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+
   --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
   --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
   --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+
   --size-lg: calc(var(--line-height-ems) * var(--step-whole));
   --size-xl: calc(var(--size-lg) * var(--step-whole));
   --size-2xl: calc(var(--size-xl) * var(--step-whole));
+
   letter-spacing: 0.0618em;
   text-transform: uppercase;
   font-size: calc(1em / var(--step-half));
@@ -875,30 +446,37 @@ template {
     font-size: 1vw;
   }
 }
+
 @media screen and (max-width: 767px) {
   .display1__bold,
   .display1 {
     font-size: 3.3301em;
   }
 }
+
 @media screen and (max-width: 479px) {
   .display1 {
     font-size: 2.61743em;
   }
+
   .display1__bold {
     font-size: 2.61743em;
   }
+
   .display2 {
     font-size: 2.05818em;
   }
+
   .display2__bold {
     font-size: 2.05818em;
   }
+
   .title1__bold,
   .title1 {
     font-size: 1.82285em;
   }
 }
+
 .rich-text {
   color: var(--light__onsurface_lkv);
 }
@@ -1001,104 +579,3 @@ template {
   margin-top: 1em;
   margin-bottom: 11em;
 }
-
-input {
-  background-color: var(--input-bg-primary);
-  padding: var(--size-xs);
-  width: 100%;
-  border-radius: var(--size-xs);
-  border: 2px solid var(--color-border-primary);
-}
-
-.profile-info {
-  background: var(--color-bg-secondary);
-  padding: var(--size-xl);
-}
-
-img.profile-info__photo {
-  max-height: calc(var(--size-2xl) * var(--step-whole) * var(--step-whole) * var(--step-whole));
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.card {
-  border-radius: var(--size-md);
-}
-
-@media (prefers-color-scheme: light) {
-  .card *, *::before {
-    --base-00: var(--flexoki-paper);
-    --base-05: var(--flexoki-50);
-    --base-10: var(--flexoki-100);
-    --base-10: var(--flexoki-100);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .card *, *::before {
-    --base-00: var(--flexoki-black);
-    --base-05: var(--flexoki-950);
-    --base-10: var(--flexoki-900);
-    --base-30: red !important;
-  }
-}
-* {
-  box-sizing: border-box;
-  font-family: var(--font-default);
-}
-
-html {
-  font-size: 16px;
-}
-
-body {
-  font-size: 1rem;
-  background-color: var(--color-bg-primary);
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* align */
-.ds span:not(:first-child)::before {
-  content: " · "; /* Middle dot separator */
-  margin: 0 3px; /* Adjust spacing as needed */
-  color: var(--color-tx-muted); /* Match text color */
-}
-
-/* align */
-.l {
-  text-align: left;
-}
-
-.r {
-  text-align: right;
-}
-
-.c {
-  text-align: center;
-}
-
-.cc {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.vt {
-  vertical-align: top;
-}
-
-/* grid */
-.flex, .flex {
-  display: flex;
-  gap: var(--wholestep);
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-}
-
-.gc2, .grid-col-2 {
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-}
-
-.flex-evenly, .fe {
-  justify-content: space-between;
-}/*# sourceMappingURL=styles.css.map */

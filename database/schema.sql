@@ -16,7 +16,7 @@ CREATE TABLE res_org (
 -- Table for residents (students and faculty)
 CREATE TABLE resident (
     resident_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    resident_name VARCHAR(100) NOT NULL,
     home_address JSONB NOT NULL, -- Stores address as JSON
     email VARCHAR(100) UNIQUE NOT NULL,
     phone VARCHAR(15) UNIQUE NOT NULL
@@ -39,7 +39,7 @@ CREATE TABLE faculty (
 -- Table for visitors
 CREATE TABLE visitor (
     visitor_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    visitor_name VARCHAR(100) NOT NULL,
     from_address JSONB NOT NULL, -- Stores visitor's address
     expected_stay INTERVAL NOT NULL
 );

@@ -1,17 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>IIT Hyderabad – Access Logs</title>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gate Access System</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<nav>
-		<span></span>
-		<input type="text" name="okay" id="search-residents" placeholder="Search by name or roll number...">
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header__logo c">
+			<img src="/assets/iith-logo.png" class="c" alt="IIT Hyderabad">
+		</div>
+    <div class="header-search">
+      <input type="text" id="search-input" placeholder="Enter name or roll number..." autocomplete="off">
+      <!-- Custom dropdown for search suggestions -->
+      <ul id="search-results" class="dropdown hidden"></ul>
+    </div>
+  </header>
 
-	</nav>
+  <main class="main-content">
+    <section class="resident-profile">
+      <div id="profile-info" class="card title-b profile-info flex flex-evenly">
+        <!-- Dynamic profile details will be populated here -->
+        <div>
+					<div id="profile-details" class="profile-info__details">
+          <h2 id="resident-name" class="profile-info__name title-a">Jatin Jain</h2>
+          <div class="profile-info-secondary ds">
+						<span id="resident-roll" class=profile-info__dspanpartment">CS23BTECH11005</span>
+						<span id="resident-department" class="profile-info__department">Computer Science & Engineering</span>
+						<span id="resident-joined" class="profile-info__joined">Joined 2023</span>
+					</div>
+        </div>
+				<section class="access-log">
+      <h3>Accesses</h3>
+      <table id="access-log-table" class="table">
+        <thead>
+          <tr>
+            <th>Entry Time</th>
+            <th>Exit Time</th>
+          </tr>
+        </thead>
+        <tbody>
 
+				</tbody>
+      </table>
+    </section>
+				</div>
+				<img id="profile-photo" class="l profile-info__photo" src="/assets/photo-placeholder.jpg" alt="Profile Photo">
+      </div>
+    </section>
+    <section class="cards">
+      <h2>Add Guests</h2>
+      <form id="guest-form" class="form">
+        <div class="form__group">
+          <label for="guest-name">Guest Name</label>
+          <input type="text" id="guest-name" name="guest-name" placeholder="Enter guest name">
+        </div>
+        <div class="form__group">
+          <label for="from-address">From Address</label>
+          <input type="text" id="from-address" name="from-address" placeholder="Enter visitor's address">
+        </div>
+        <div class="form__group">
+          <label for="expected-stay">Expected Stay</label>
+          <select id="expected-stay" name="expected-stay">
+            <option value="3 hours">3 hours</option>
+            <option value="6 hours">6 hours</option>
+            <option value="12 hours">12 hours</option>
+            <option value="1 day">1 day</option>
+            <option value="2 days">2 days</option>
+          </select>
+        </div>
+        <div class="form__group">
+          <label for="vehicle-number">Vehicle Number</label>
+          <input type="text" id="vehicle-number" name="vehicle-number" placeholder="Enter vehicle number">
+        </div>
+        <button type="submit" id="guest-submit-btn" class="btn">Confirm Entry</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Notification / Alert Section -->
+  <div id="notification" class="notification"></div>
+
+  <script src="scripts/utils.js"></script>
+  <script src="scripts/search.js"></script>
+  <script src="scripts/access.js"></script>
+  <script src="scripts/guests.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

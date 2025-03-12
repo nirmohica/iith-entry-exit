@@ -1,0 +1,9 @@
+.profile-info {
+	background: var(--color-bg-secondary);
+	padding: var(--size-xl);
+}
+
+img.profile-info__photo {
+	max-height: calc(var(--size-2xl)*var(--step-whole)*var(--step-whole)*var(--step-whole));
+	object-fit: cover;
+}

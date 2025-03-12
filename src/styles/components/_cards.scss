@@ -1,0 +1,21 @@
+.card {
+	border-radius: var(--size-md);
+
+}
+
+@media (prefers-color-scheme: light) {
+			.card *, *::before {
+				--base-00: var(--flexoki-paper);
+				--base-05: var(--flexoki-50);
+				--base-10: var(--flexoki-100);
+
+				--base-10: var(--flexoki-100);
+			}}
+			@media (prefers-color-scheme: dark) {
+		.card *, *::before {
+		--base-00: var(--flexoki-black);
+		--base-05: var(--flexoki-950);
+		--base-10: var(--flexoki-900);
+		--base-30: red !important;
+	}
+}

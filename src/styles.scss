@@ -1,10 +1,56 @@
-@import 'styles/variables';
-@import 'styles/normalise';
+@import 'styles/base/normalise';
+@import 'styles/base/variables';
+@import 'styles/typography';
+
+@import 'styles/components/inputs';
+@import 'styles/components/profile_card';
+@import 'styles/components/cards';
+
 * {
 	box-sizing: border-box;
 	font-family: var(--font-default);
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
+	font-size: 1rem;
 	background-color: var(--color-bg-primary);
+	max-width: 1200px;
+	margin: auto;
+}
+
+
+/* align */
+.ds span:not(:first-child)::before {
+  content: " · "; /* Middle dot separator */
+  margin: 0 3px; /* Adjust spacing as needed */
+  color: var(--color-tx-muted); /* Match text color */
+}
+
+/* align */
+.l { text-align:left;}
+.r { text-align:right;}
+.c { text-align:center;}
+.cc { margin-left:auto; margin-right:auto;}
+.vt { vertical-align:top; }
+
+/* grid */
+.flex, .flex {
+  display: flex;
+  gap: var(--wholestep);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows:auto;
+
+}
+
+.gc2, .grid-col-2 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+}
+
+.flex-evenly, .fe {
+	justify-content: space-between;
 }
