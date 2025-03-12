@@ -1,0 +1,10 @@
+@import 'styles/variables';
+@import 'styles/normalise';
+* {
+	box-sizing: border-box;
+	font-family: var(--font-default);
+}
+
+body {
+	background-color: var(--color-bg-primary);
+}
