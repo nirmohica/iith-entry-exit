@@ -86,3 +86,10 @@ CREATE TABLE vehicle (
     access_id INT NOT NULL,
     FOREIGN KEY (access_id) REFERENCES access(access_id)
 );
+
+-- Creating index on resident_id
+CREATE INDEX ResidentId on resident(resident_id);
+
+-- Creating index on resident_name
+CREATE INDEX ResidentName on resident(resident_name);
+
