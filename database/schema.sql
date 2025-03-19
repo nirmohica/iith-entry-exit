@@ -1,3 +1,13 @@
+-- Table for residents (students and faculty)
+CREATE TABLE resident (
+    resident_id SERIAL PRIMARY KEY,
+    resident_name VARCHAR(100) NOT NULL,
+    home_address JSONB NOT NULL, -- Stores address as JSON
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15) UNIQUE NOT NULL,
+		photo BYTEA
+);
+
 -- Table for organizational units
 CREATE TABLE org_unit (
     unit_name VARCHAR(100) PRIMARY KEY,
@@ -11,15 +21,6 @@ CREATE TABLE res_org (
     PRIMARY KEY (resident_id, unit_name),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
     FOREIGN KEY (unit_name) REFERENCES org_unit(unit_name)
-);
-
--- Table for residents (students and faculty)
-CREATE TABLE resident (
-    resident_id SERIAL PRIMARY KEY,
-    resident_name VARCHAR(100) NOT NULL,
-    home_address JSONB NOT NULL, -- Stores address as JSON
-    email VARCHAR(100) UNIQUE NOT NULL,
-    phone VARCHAR(15) UNIQUE NOT NULL
 );
 
 -- Table for students
@@ -92,4 +93,3 @@ CREATE INDEX ResidentId on resident(resident_id);
 
 -- Creating index on resident_name
 CREATE INDEX ResidentName on resident(resident_name);
-

@@ -1055,6 +1055,7 @@ body {
   background-color: var(--color-bg-primary);
   max-width: 1200px;
   margin: auto;
+  padding: 0 10%;
 }
 
 /* align */
