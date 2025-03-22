@@ -1,6 +1,6 @@
 -- Q1- latest_accesses retrieves the top 5 records of a resident by inputting the resident ID. Function
 
-CREATE OR REPLACE FUNCTION latest_accesses(p_resident_id INT)
+CREATE OR REPLACE FUNCTION latest_accesses(p_resident_id VARCHAR(20))
 RETURNS TABLE (
     access_id INT,
     entry_time TIMESTAMP,
@@ -20,7 +20,7 @@ $$ LANGUAGE plpgsql;
 -- Q2- add_resident_entry requires the resident ID as input. Stored Procedure
 
 -- Stored procedure to add a resident entry
-CREATE OR REPLACE PROCEDURE add_resident_entry(p_resident_id INT)
+CREATE OR REPLACE PROCEDURE add_resident_entry(p_resident_id VARCHAR(20))
 LANGUAGE plpgsql
 AS $$
 DECLARE
@@ -37,7 +37,7 @@ $$;
 -- Q3- add_visitor_entry requires the resident ID, an array of names, and vehicle details as input. Stored procedure
 
 CREATE OR REPLACE PROCEDURE add_visitor_entry(
-    p_resident_id INT,
+    p_resident_id VARCHAR(20),
     p_visitor_names TEXT[],
     p_vehicle_number VARCHAR(20),
     p_vehicle_type VARCHAR(50)
@@ -115,7 +115,7 @@ $$ LANGUAGE plpgsql;
 -- Q6 - add_resident_exit requires the resident ID as input. Stored Procedure
 
 -- Stored procedure to mark resident exit
-CREATE OR REPLACE PROCEDURE add_resident_exit(p_resident_id INT)
+CREATE OR REPLACE PROCEDURE add_resident_exit(p_resident_id VARCHAR(20))
 LANGUAGE plpgsql
 AS $$
 DECLARE
@@ -142,7 +142,7 @@ $$;
 
 -- Q7 - add_visitor_exit requires the resident ID as input. Stored procedure
 -- Stored procedure to mark a specific visitor's exit
-CREATE OR REPLACE PROCEDURE add_visitor_exit(p_resident_id INT, p_visitor_id INT)
+CREATE OR REPLACE PROCEDURE add_visitor_exit(p_resident_id VARCHAR(20), p_visitor_id INT)
 LANGUAGE plpgsql
 AS $$
 DECLARE
