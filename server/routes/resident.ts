@@ -1,0 +1,1 @@
+// handle resident-related queries

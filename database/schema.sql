@@ -1,6 +1,6 @@
 -- Table for residents (students and faculty)
 CREATE TABLE resident (
-    resident_id SERIAL PRIMARY KEY,
+    resident_id VARCHAR(20) PRIMARY KEY,
     resident_name VARCHAR(100) NOT NULL,
     home_address JSONB NOT NULL, -- Stores address as JSON
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE org_unit (
 
 -- Table for linking residents and organizational units (res_org)
 CREATE TABLE res_org (
-    resident_id INT NOT NULL,
+    resident_id VARCHAR(20) NOT NULL,
     unit_name VARCHAR(100) NOT NULL,
     PRIMARY KEY (resident_id, unit_name),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
@@ -25,14 +25,14 @@ CREATE TABLE res_org (
 
 -- Table for students
 CREATE TABLE student (
-    resident_id INT PRIMARY KEY,
+    resident_id VARCHAR(20) PRIMARY KEY,
     college_address VARCHAR(255),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id)
 );
 
 -- Table for faculty
 CREATE TABLE faculty (
-    resident_id INT PRIMARY KEY,
+    resident_id VARCHAR(20) PRIMARY KEY,
     college_address VARCHAR(255),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id)
 );
@@ -47,7 +47,7 @@ CREATE TABLE visitor (
 
 -- Table for linking residents and visitors (res_visitors)
 CREATE TABLE res_visitors (
-    resident_id INT NOT NULL,
+    resident_id VARCHAR(20) NOT NULL,
     visitor_id INT NOT NULL,
     PRIMARY KEY (resident_id, visitor_id),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
@@ -63,7 +63,7 @@ CREATE TABLE access (
 
 -- Table for linking residents and access logs (res_accesses)
 CREATE TABLE res_accesses (
-    resident_id INT NOT NULL,
+    resident_id VARCHAR(20) NOT NULL,
     access_id INT NOT NULL,
     PRIMARY KEY (resident_id, access_id),
     FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
