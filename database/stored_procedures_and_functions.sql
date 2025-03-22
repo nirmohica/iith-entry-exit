@@ -77,23 +77,20 @@ END;
 $$;
 
 
+-- Q4: Anup -- new index for fuzzy search
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX idx_resident_name_trgm ON resident USING GIN (resident_name, gin_trgm_ops);
 
--- Q4- search_resident_id searches for a resident by ID. Input can be incomplete (e.g., CS23BTECH11). Function 
-
-CREATE OR REPLACE FUNCTION search_resident_id(p_resident_id TEXT)
-RETURNS TABLE (
-    name VARCHAR(100),
-    resident_id INT,
-    phone VARCHAR(15)
-) AS $$
+CREATE OR REPLACE FUNCTION search_resident_id(p_input TEXT)
+RETURNS TABLE (name VARCHAR(100), resident_id VARCHAR(20), phone VARCHAR(15)) AS $$
 BEGIN
     RETURN QUERY
-    SELECT r.name, r.resident_id, r.phone
+    SELECT r.resident_name, r.resident_id, r.phone
     FROM resident r
-    WHERE CAST(r.resident_id AS TEXT) LIKE p_resident_id || '%';
+    WHERE r.resident_id ILIKE p_input || '%' -- Prefix Search
+        OR SIMILARITY(r.resident_name, p_input) > 0.3; -- Fuzzy name match
 END;
 $$ LANGUAGE plpgsql;
-
 
 -- Q5 - search_resident_name searches for a resident by name with similar input and output. 
 -- Function to search for a resident by name (exact matching)
