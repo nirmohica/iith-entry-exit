@@ -79,7 +79,7 @@ $$;
 
 -- Q4: Anup -- new index for fuzzy search
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE INDEX idx_resident_name_trgm ON resident USING GIN (resident_name, gin_trgm_ops);
+CREATE INDEX idx_resident_name_trgm ON resident USING GIN (resident_name gin_trgm_ops);
 
 CREATE OR REPLACE FUNCTION search_resident_id(p_input TEXT)
 RETURNS TABLE (name VARCHAR(100), resident_id VARCHAR(20), phone VARCHAR(15)) AS $$
@@ -167,6 +167,6 @@ END;
 $$;
 
 -- Anup: B-Tree index on resident_id
-CREATE INDEX idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
+CREATE INDEX IF NOT EXISTS idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
 
 
