@@ -165,3 +165,8 @@ BEGIN
     END IF;
 END;
 $$;
+
+-- Anup: B-Tree index on resident_id
+CREATE INDEX idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
+
+
