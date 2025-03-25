@@ -1,0 +1,24 @@
+// server/utils/another.ts
+import { sendOTP } from '../utils/email';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+async function testSendEmail() {
+  try {
+    console.log('Sending test email...');
+    await sendOTP('anup83450@gmail.com', '123456');
+    console.log('✅ Email sent successfully!');
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('❌ Failed to send email:', error.message);
+    } else if (typeof error === 'object' && error !== null && 'response' in error) {
+      const sgError = error as { response?: { body?: unknown }};
+      console.error('❌ SendGrid API Error:', sgError.response?.body);
+    } else {
+      console.error('❌ Unknown error occurred:', error);
+    }
+  }
+}
+
+testSendEmail();
