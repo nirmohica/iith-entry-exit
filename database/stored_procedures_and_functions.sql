@@ -193,6 +193,24 @@ BEGIN
 END;
 $$;
 
+-- Anup: Top 5 visitors for a resident id
+CREATE OR REPLACE FUNCTION top_visitors(p_resident_id TEXT)
+RETURNS TABLE (
+    visitor_name VARCHAR(100),
+    visitor_id INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT v.visitor_name, v.visitor_id
+    FROM res_visitors rv
+    JOIN visitor v ON rv.visitor_id = v.visitor_id
+    JOIN visitor_accesses va ON v.visitor_id = va.visitor_id
+    WHERE rv.resident_id = p_resident_id
+    ORDER BY COUNT(*) OVER (PARTITION BY v.visitor_id) DESC
+    LIMIT 5;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Anup: B-Tree index on resident_id
 CREATE INDEX IF NOT EXISTS idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
 
