@@ -78,33 +78,60 @@ $$;
 
 
 -- Q4: Anup -- new index for fuzzy search
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE INDEX idx_resident_name_trgm ON resident USING GIN (resident_name gin_trgm_ops);
+CREATE EXTENSION IF NOT EXITS pg_trgm;
+CREATE INDEX IF NOT EXISTS idx_resident_name_trgm ON resident USING GIN ((resident_name || ' ' || resident_id) gin_trgm_ops);
 
-CREATE OR REPLACE FUNCTION search_resident_id(p_input TEXT)
-RETURNS TABLE (name VARCHAR(100), resident_id VARCHAR(20), phone VARCHAR(15)) AS $$
-BEGIN
-    RETURN QUERY
-    SELECT r.resident_name, r.resident_id, r.phone
-    FROM resident r
-    WHERE r.resident_id ILIKE p_input || '%' -- Prefix Search
-        OR SIMILARITY(r.resident_name, p_input) > 0.3; -- Fuzzy name match
-END;
-$$ LANGUAGE plpgsql;
-
--- Q5 - search_resident_name searches for a resident by name with similar input and output. 
--- Function to search for a resident by name (exact matching)
-CREATE OR REPLACE FUNCTION search_resident_name(p_resident_name VARCHAR(100))
+CREATE OR REPLACE FUNCTION search_resident(p_input TEXT)
 RETURNS TABLE (
     name VARCHAR(100),
-    resident_id INT,
-    phone VARCHAR(15)
+    resident_id VARCHAR(20),
+    phone VARCHAR(15),
+    department VARCHAR(100)
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT r.name, r.resident_id, r.phone
+    WITH words AS (
+        SELECT unnest(string_to_array(lower(p_input), ' ')) AS w
+    )
+    SELECT 
+        r.resident_name, 
+        r.resident_id, 
+        r.phone, 
+        o.unit_name AS department
     FROM resident r
-    WHERE r.name = p_resident_name;
+    LEFT JOIN res_org ro ON r.resident_id = ro.resident_id
+    LEFT JOIN org_unit o ON ro.unit_name = o.unit_name
+    WHERE 
+    (
+      -- If the entire input is short (<= 4 chars) and contains no digits,
+      -- do a simple substring search on resident_name and department.
+      (p_input !~ '[0-9]' AND LENGTH(p_input) <= 4
+         AND (lower(r.resident_name) ILIKE '%' || lower(p_input) || '%'
+              OR lower(o.unit_name) ILIKE '%' || lower(p_input) || '%')
+      )
+      OR
+      -- Otherwise, use word-by-word matching.
+      (
+        (SELECT COUNT(*) FROM words)
+        =
+        (SELECT COUNT(*) FROM words ww
+         WHERE 
+           (
+             ww.w ~ '[0-9]'  -- if the word contains a digit, match only against resident_id
+             AND r.resident_id ILIKE '%' || ww.w || '%'
+           )
+           OR
+           (
+             ww.w !~ '[0-9]'  -- if the word contains no digit,
+             AND (
+                   r.resident_id ILIKE '%' || ww.w || '%'
+                   OR SIMILARITY(lower(r.resident_name), ww.w) > 0.6
+                   OR lower(o.unit_name) ILIKE '%' || ww.w || '%'
+                 )
+           )
+        )
+      )
+    );
 END;
 $$ LANGUAGE plpgsql;
 
@@ -168,5 +195,9 @@ $$;
 
 -- Anup: B-Tree index on resident_id
 CREATE INDEX IF NOT EXISTS idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
+
+
+-- Anup: Index for fast lookups in searching resident (join with res_org, etc)
+CREATE INDEX IF NOT EXISTS idx_org_unit_name ON org_unit USING GIN(unit_name gin_trgm_ops);
 
 

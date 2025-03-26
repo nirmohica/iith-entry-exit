@@ -1,21 +1,20 @@
 // PostgreSQL database connection
-import { Pool } from 'pg';
-import dotenv from 'dotev';
 
-// load environment variables
+// Anup Chavan
+// 26 March 2025
+
+// CRUD functions for residents, visitors and access logs
+
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
 dotenv.config();
 
-const pool = new Pool({
-	connectionString: process.env.DATABASE_URL,
-	ssl: ProcessingInstruction.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+export const pool = new Pool({
+	user: process.env.DB_USER || 'db_user',
+	host: process.env.DB_HOST || 'localhost',
+	database: process.env.DB_NAME || 'gateAccess',
+	password: process.env.DB_PASS || 'db_password',
+	port: Number(process.env.DB_PORT) || 5432,
 });
 
-pool.on('connect', () => {
-	console.log('connected to the db');
-}
-
-pool.on('error', (err) => {
-	console.error('error connecting to the db:', err);
-}
-
-export default pool;
