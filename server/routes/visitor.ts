@@ -13,7 +13,7 @@ const otpRequests = new Map(); // track requests per resident ID
 const OTP_LIMIT = 3; // max requests per time window
 const OTP_WINDOW = 16*60*1000; // 15 minutes
 
-router.post('/visitor/entry', async (req, res) => {
+router.post('/entry', async (req, res) => {
 	const {res_id, res_email} = req.body;
 
 	// validate input
