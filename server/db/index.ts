@@ -1,10 +1,7 @@
+// anup chavan
+// 26 mar 2025
+
 // PostgreSQL database connection
-
-// Anup Chavan
-// 26 March 2025
-
-// CRUD functions for residents, visitors and access logs
-
 import pg from 'pg';
 const { Pool } = pg;
 import * as dotenv from 'dotenv';

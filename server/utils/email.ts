@@ -9,7 +9,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export const sendOTP = async (email: string, otp: string) => {
 	try {
 		await sgMail.send({
-			from: 'Gate Access System <anup@anupchavan.com>',
+			from: 'Gate Access System <noreply@anupchavan.com>',
 			to: email,
 			subject: 'Your OTP for Visitor Access',
 			html: `<p>Your OTP is: <strong>${otp}</strong><p>This is a prototype</p>`

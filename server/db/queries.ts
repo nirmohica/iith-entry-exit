@@ -1,5 +1,5 @@
 // anup chavan
-// 26 march 2025
+// 26 mar 2025
 
 // crud functions for residents, visitors and accesses
 
@@ -21,18 +21,6 @@ export const addResidentEntry = async (residentid: string) => {
 	await pool.query('call add_resident_entry($1)', [residentid]);
 };
 
-// add visitor entry
-export const addVisitorEntry = async (
-	residentId: string,
-	visitorNames: string[],
-	vehicleNumber: string | null,
-	vehicleType: string | null
-) => {
-	await pool.query(
-		'CALL add_visitor_entry($1, $2, $3, $4)',
-		[residentId, visitorNames, vehicleNumber, vehicleType]
-	);
-};
 
 // add resident exit
 export const addResidentExit = async (residentId: string) => {
@@ -54,4 +42,27 @@ export const searchResident = async (input: string) => {
 export const topVisitors = async (residentId: string) => {
 	const result = await pool.query('SELECT * FROM top_visitors($1)', [residentId]);
 	return result.rows;
+};
+
+// 27 mar 2025: addVisitorEntry
+export const addVisitorEntry = async (
+	residentId: string,
+	visitorNames: string[],
+	vehicleNumber: string | null,
+	vehicleType: string | null,
+	expectedStay: string // as an interval literal, e.g., '2 days'
+) => {
+	const result = await pool.query(
+		'SELECT * FROM add_visitor_entry($1, $2, $3, $4, $5)',
+		[residentId, visitorNames, vehicleNumber, vehicleType, expectedStay]
+	);
+	return result.rows[0]; // returns { access_id, otp }
+};
+
+export const getResidentEmail = async (residentId: string) => {
+	const result = await pool.query(
+		'SELECT email FROM resident WHERE resident_id = $1',
+		[residentId]
+	);
+	return result.rows.length > 0 ? result.rows[0].email : null;
 };

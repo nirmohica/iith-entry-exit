@@ -42,7 +42,7 @@ CREATE TABLE visitor (
     visitor_id SERIAL PRIMARY KEY,
     visitor_name VARCHAR(100) NOT NULL,
     from_address JSONB NOT NULL, -- Stores visitor's address
-    expected_stay INTERVAL NOT NULL
+    expected_stay INTERVAL NOT NULL CHECK (expected_stay <= INTERVAL '14 days')
 );
 
 -- Table for linking residents and visitors (res_visitors)
@@ -58,7 +58,8 @@ CREATE TABLE res_visitors (
 CREATE TABLE access (
     access_id SERIAL PRIMARY KEY,
     entry_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    exit_time TIMESTAMP
+    exit_time TIMESTAMP,
+    password VARCHAR(50) -- For OTP or other authentication mechanisms
 );
 
 -- Table for linking residents and access logs (res_accesses)
@@ -74,7 +75,6 @@ CREATE TABLE res_accesses (
 CREATE TABLE visitor_accesses (
     visitor_id INT NOT NULL,
     access_id INT NOT NULL,
-    password VARCHAR(50), -- For OTP or other authentication mechanisms
     PRIMARY KEY (visitor_id, access_id),
     FOREIGN KEY (visitor_id) REFERENCES visitor(visitor_id),
     FOREIGN KEY (access_id) REFERENCES access(access_id)
@@ -87,9 +87,3 @@ CREATE TABLE vehicle (
     access_id INT NOT NULL,
     FOREIGN KEY (access_id) REFERENCES access(access_id)
 );
-
--- Creating index on resident_id
-CREATE INDEX ResidentId on resident(resident_id);
-
--- Creating index on resident_name
-CREATE INDEX ResidentName on resident(resident_name);
