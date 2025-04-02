@@ -4,9 +4,17 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 > “Secure by design. Ignored by institutions.”
 
-![Screenshot 1](/assets/screenshot_1.jpeg) ![Screenshot 2](/assets/screenshot_2.jpeg)
-![Screenshot 3](/assets/screenshot_3.jpeg) ![Screenshot 4](/assets/screenshot_4.jpeg)
+<p align="center">
+  <img alt="Light" src="/assets/screenshot_1.jpeg" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="/assets/screenshot_2.jpeg" width="45%">
+</p>
 
+<p align="center">
+  <img alt="Light" src="/assets/screenshot_3.jpeg" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="/assets/screenshot_4.jpeg" width="45%">
+</p>
 ---
 
 ## ✨ Features
@@ -110,4 +118,3 @@ If you’re reading this and plan to suggest a “more scalable blockchain-based
 ### Author
 
 ~~ChatGPT~~ Anup Chavan
-Resident of: The Gate That Should Have Been Smarter
