@@ -59,12 +59,13 @@ git clone https://github.com/yourname/gate-access-system.git
 cd gate-access-system
 ```
 
-2. Install dependencies
+### 2. Install dependencies
 
 ```
 npm install
 ```
-3. Create a .env file
+
+### 3. Create a .env file
 
 ```
 DB_USER=your_db_user
@@ -76,7 +77,7 @@ DB_PORT=5432
 SENDGRID_API_KEY=your_sendgrid_api_key
 ```
 
-4. Initialize the database
+### 4. Initialize the database
 
 Inside `/database/`:
 ```
@@ -85,20 +86,20 @@ psql -U your_user -d gateAccess -f stored_procedures_and_functions.sql
 psql -U your_user -d gateAccess -f seed.sql
 ```
 
-5. Run the server
+### 5. Run the server
 
 ```
 npm run dev
 ```
 ---
 
-### 🤡 Known Issues
+## 🤡 Known Issues
 
 - Nobody uses it.
 - Authority figures have opinions.
 - You might care too much.
 
-### Possible Improvements
+## Possible Improvements
 
 - Face recognition (but make it ethical)
 - Proper role-based access control
@@ -106,7 +107,7 @@ npm run dev
 - Dark mode that actually saves your soul
 
 
-### 🪦 Final Thoughts
+## 🪦 Final Thoughts
 
 This system was built with love, frustration, and a tragic understanding that the best ideas are sometimes killed by committee. If you’re reading this and actually want to use it—thank you.
 
