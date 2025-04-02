@@ -1,0 +1,152 @@
+ul.dropdown {
+	background-color: var(--flexoki-200);
+}
+
+/* Container that holds the input and the dropdown */
+.header-search-container {
+  position: relative; /* so the .dropdown can be absolutely positioned inside it */
+  width: 100%;       /* adjust as needed */
+  margin: 0 auto;     /* center horizontally if you like */
+}
+
+/* The search input and icon side by side */
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: var(--size-md);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--base-05);
+}
+
+.search-input-wrapper .icon {
+  margin-right: 0.5rem;
+  width: 1.1em; /* icon size can be scaled */
+  height: 1.1em;
+  color: var(--base-40); /* icon color */
+
+}
+
+
+.search-input-wrapper {
+  /* Default: no outline, smooth transition */
+  outline: 1.21px solid var(--base-20);
+  transition: outline 0.1s ease-in;
+}
+
+/* When hovering anywhere in .search-input-wrapper (including the input),
+   show a 1px red outline. */
+.search-input-wrapper:hover {
+  outline: 1px solid var(--base-40);
+}
+
+/* When a child input is focused (active), increase the red outline to 2px. */
+.search-input-wrapper:focus-within {
+  outline: 1.6px solid var(--base-30);
+}
+
+.search-input-wrapper > svg {
+	color: var(--base-50);
+	width: 20px;
+	height: 20px;
+}
+/* The actual text field */
+#search-input {
+  border: none;
+  outline: none;
+  flex: 1; /* takes remaining space */
+  font-size: 1rem;
+}
+
+/* The dropdown list */
+.dropdown {
+  position: absolute;
+  top: 100%; /* just below the wrapper */
+  left: 0;
+  right: 0;  /* stretch full width of container */
+  margin-top: 0.25rem;
+
+  background-color: red;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 6px;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 999; /* on top of everything */
+}
+
+.dropdown.show {
+  max-height: 500px; /* allow up to 500px of items (adjust as needed) */
+  opacity: 1;
+}
+
+/* Hide it completely if .hidden is present */
+.dropdown.hidden {
+  display: none;
+}
+
+/* Remove default list bullets */
+.dropdown li {
+  list-style-type: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+
+/* On hover */
+.dropdown li:hover {
+  background-color: var(--base-10);
+	outline: 1px solid var(--base-15);
+	border-radius: var(--size-xs);
+	color: var(--base-95);
+	cursor: pointer;
+}
+
+/* Title + Subtitle style inside each li (like GitHub style) */
+.dropdown li .title {
+  font-weight: 600;
+  color: var(--base-95);
+  margin-bottom: 2px;
+}
+
+.dropdown li .subtitle {
+  font-size: 0.85rem;
+  color: var(--base-50);
+}
+
+#search-results {
+  max-height: 240px;
+  overflow-y: auto;
+	background-color: var(--base-05);
+	border-radius: var(--size-sm);
+	border: 1px solid var(--base-15);
+	padding: var(--size-md);
+	margin-top: var(--size-sm);
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dropdown {
+  max-height: 240px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between image & text */
+  padding: 0.5rem 0.75rem;
+  list-style: none;
+}
+
+/* The photo is a small thumbnail */
+.dropdown li .thumb {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

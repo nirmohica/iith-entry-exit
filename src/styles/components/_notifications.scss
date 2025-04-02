@@ -1,0 +1,65 @@
+.notification .msg-text {
+  margin-left: 0.5rem;
+}
+.notification svg {
+	width: 1em;
+	height: 1em;
+}
+
+.notification {
+  /* Put it at the bottom, centered horizontally */
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+
+  /* Basic styling */
+  min-width: 200px;
+  max-width: 80vw;
+  background: #444;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--size-md);
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+  /* By default hidden; we show it in JS */
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show it by toggling display in JS, or adding a class if you prefer */
+.notification.show {
+  display: flex;
+  opacity: 1;
+	* {
+		line-height: 0.9;
+	}
+}
+
+.notification.error-notification {
+  background-color: var(--error-50); /* red-ish */
+		* {
+		color: var(--error-05);
+	}
+}
+
+.notification.success-notification {
+  background-color: var(--success-50);
+	* {
+		color: var(--success-05);
+	}
+}
+
+.notification.info-notification {
+  background-color: var(--info-50); /* blue-ish */
+	* {
+		color: var(--success-05);
+	}
+}
+
+/* We'll set .fade-out to reduce opacity to 0 */
+.notification.fade-out {
+  opacity: 0;
+}

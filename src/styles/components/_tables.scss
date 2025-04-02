@@ -1,0 +1,53 @@
+@import "../base/variables";
+.table td {
+	padding: var(--size-sm);
+	color: var(--base-90);
+	font-family: var(--font-mono);
+}
+
+.table {
+	background-color: var(--base-10);
+	padding: var(--size-md);
+	border-radius: var(--size-sm);
+	border: 1px solid var(--base-20);
+}
+
+.table th {
+
+	color: var(--base-95);
+	padding: var(--size-sm);
+	text-align: left;
+	font-size: 111%;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.w100 {
+	width: 100%;
+}
+
+#profile-info.success-glow td {
+	color: var(--success-90);
+}
+
+#profile-info.success-glow table {
+	background-color: var(--success-10);
+	border: 1px solid var(--success-20);
+}
+
+#profile-info.success-glow th {
+	color: var(--success-95);
+}
+
+#profile-info.info-glow td {
+	color: var(--info-90);
+}
+
+#profile-info.info-glow table {
+	background-color: var(--info-10);
+	border: 1px solid var(--info-20);
+}
+
+#profile-info.info-glow th {
+	color: var(--info-95);
+}

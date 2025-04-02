@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <title>Gate Access System - Exit</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header__logo c">
+      <img src="/assets/iith-logo.png" class="c" alt="IIT Hyderabad" />
+    </div>
+    <div class="header-search">
+      <!-- For exit, we only need the resident ID input -->
+<div class="search-input-wrapper mb-sm">
+        <span data-lucide="id-card"></span>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Scan your ID card..."
+          autocomplete="off"
+        />
+      </div>    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="resident-profile">
+      <div class="card profile-info flex flex-start" id="profile-info">
+        <img
+          id="profile-photo"
+          class="profile-info__photo"
+          src="/assets/photo-placeholder.jpg"
+          alt="Profile Photo"
+        />
+        <div class="w100">
+          <div id="profile-details" class="profile-info__details">
+            <h2 id="resident-name" class="profile-info__name">Resident Name</h2>
+            <div class="profile-info-secondary ds">
+              <span id="resident-roll" class="profile-info__dspanpartment"
+                >CS23BTECH11005</span
+              >
+              <span id="resident-department" class="profile-info__department"
+                >Computer Science & Engineering</span
+              >
+            </div>
+          </div>
+          <section class="access-log w100">
+            <table id="access-log-table" class="table w100">
+              <thead>
+                <tr>
+                  <th>Entry Time</th>
+                  <th>Exit Time</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Notification / Alert Section -->
+  <div id="notification" class="notification flex"></div>
+
+  <!-- Script files: Note that for the exit page we load our exit.ts (compiled to exit.js) -->
+  <script type="module" src="../dist/scripts/utils.js"></script>
+  <script type="module" src="../dist/scripts/api.js"></script>
+  <script type="module" src="../dist/scripts/constants.js"></script>
+  <script type="module" src="../dist/scripts/ui.js"></script>
+  <script type="module" src="../dist/scripts/exit.js"></script>
+  <script type="module" src="../dist/scripts/main_exit.js"></script>
+	  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

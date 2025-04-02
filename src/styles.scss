@@ -5,7 +5,10 @@
 @import 'styles/components/inputs';
 @import 'styles/components/profile_card';
 @import 'styles/components/cards';
-
+@import 'styles/components/dropdown';
+@import 'styles/components/tables';
+@import 'styles/components/buttons';
+@import 'styles/components/notifications';
 * {
 	box-sizing: border-box;
 	font-family: var(--font-default);
@@ -18,7 +21,7 @@ html {
 body {
 	font-size: 1rem;
 	background-color: var(--color-bg-primary);
-	max-width: 1200px;
+	max-width: 1320px;
 	margin: auto;
 	padding: 0 10%;
 }
@@ -29,6 +32,7 @@ body {
   content: " · "; /* Middle dot separator */
   margin: 0 3px; /* Adjust spacing as needed */
   color: var(--color-tx-muted); /* Match text color */
+	font-size: 130%;
 }
 
 /* align */
@@ -41,7 +45,7 @@ body {
 /* grid */
 .flex, .flex {
   display: flex;
-  gap: var(--wholestep);
+  gap: var(--size-lg);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows:auto;
 
@@ -54,4 +58,326 @@ body {
 
 .flex-evenly, .fe {
 	justify-content: space-between;
+}
+.flex-start, .fs {
+	justify-content: flex-start;
+}
+
+#visitors-container .visitor-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#visitors-container .visitor-row input,
+#visitors-container .visitor-row select {
+  flex: 1;
+}
+#visitors-container .remove-visitor {
+  cursor: pointer;
+  color: #d33;
+}
+
+.highlight {
+  background-color: var(--base-10);
+	outline: 1px solid var(--base-15);
+	border-radius: var(--size-xs);
+	color: var(--base-95);
+	cursor: pointer;
+}
+
+.pb-sm {
+	padding-bottom: var(--size-sm);
+}
+
+.mb-sm {
+	margin-bottom: var(--size-sm);
+}
+
+.mt-sm {
+	margin-top: var(--size-sm);
+}
+.mt-md {
+	margin-top: var(--size-md);
+}
+.mb-md {
+	margin-bottom: var(--size-md);
+}
+.mt-lg {
+	margin-top: var(--size-lg);
+}
+.mt-xl {
+	margin-top: var(--size-xl);
+}
+.mt-2xl {
+	margin-top: var(--size-2xl);
+}
+
+/* Make the visitors list have a bit of spacing at the bottom */
+#visitors-list {
+  margin-top: 1rem;
+}
+
+/* Each row is displayed horizontally with some spacing */
+.visitor-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;  /* space between rows */
+}
+
+/* The two text inputs share row space */
+.visitor-name, .visitor-address {
+  flex: 1;
+  margin-right: 0.5rem;
+  padding: 0.4rem;
+}
+
+/* The remove button at the right */
+.remove-visitor-btn {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.remove-visitor-btn:hover {
+  background-color: #eee;
+}
+#profile-info {
+	z-index: -1;
+	transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Example: success (cyan) */
+#profile-info.success-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-green-500-20);
+  border: 1.21px solid var(--success-40);
+  background-color: var(--success-05); /* or var(--flexoki-cyan-05) if you prefer */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+
+}
+
+
+/* Example: error (red) */
+#profile-info.error-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-red-400-40);
+  border: 2px solid var(--flexoki-red-400);
+  background-color: var(--error-05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#profile-info.info-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-yellow-400-20);
+  border: 1.21px solid var(--flexoki-yellow-400);
+  background-color: var(--info-05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+#profile-info.success-glow h2 {
+  color: var(--flexoki-cyan-900) !important; /* or some complementary color */
+}
+
+#profile-info.success-glow span {
+	color: var(--flexoki-cyan-850) !important; /* or some complementary color */
+}
+
+#profile-info.info-glow h2 {
+  color: var(--info-90) !important; /* or some complementary color */
+}
+
+#profile-info.info-glow span {
+	color: var(--flexoki-yello-850) !important; /* or some complementary color */
+}
+/* A “grayed out” style – you can refine the look. */
+#visitors-section.disabled {
+  opacity: 0.5;
+  pointer-events: none; /* prevents clicks on all child elements */
+}
+
+
+.visitor-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Make input narrower, or as you prefer */
+.visitor-name,
+.visitor-address {
+  flex: 1;
+  margin-right: 0.5rem;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.remove-visitor-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.remove-visitor-btn:hover {
+  background-color: #e6e6e6;
+}
+
+// /* OTP group styling, if you want a distinct look */
+// #otp-group {
+//   margin-top: 1rem;
+//   display: flex;
+//   align-items: center;
+// }
+// #otp-group input {
+//   margin-right: 0.5rem;
+// }
+
+
+.profile-info-secondary {
+	color: var(--base-70);
+}
+
+h2 {
+	margin-bottom: 12px;
+}
+h2 {
+	letter-spacing: -0.022em;
+}
+h3 {
+	letter-spacing: -0.022em;
+}
+
+#resident-roll {
+	font-family: var(--font-mono);
+}
+
+/* The visitors card styling */
+#visitors-section.card {
+  background-color: var(--base-05);          /* light background */
+  border: 1px solid var(--base-10);          /* subtle border */
+  padding: var(--size-md);                   /* spacing from your scale */
+
+  margin-bottom: var(--size-md);
+  color: var(--base-90);                     /* main text color */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Header inside the card */
+#visitors-section.card > h2 {
+  font-size: calc(1em * var(--step-whole));
+  margin-bottom: var(--size-sm);
+}
+
+/* The "Add Visitor", "Confirm Entry", "Cancel" buttons, etc. */
+#visitors-section .btn {
+  background-color: var(--base-10);
+  color: var(--base-90);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  margin-right: 0.5rem;   /* spacing between buttons */
+  margin-bottom: 0.75rem; /* optional spacing below each button */
+}
+
+#visitors-section .btn:hover {
+  background-color: var(--base-30);
+}
+
+/* Hide element with the .hidden class */
+#visitors-section .hidden {
+  display: none;
+}
+
+/* The grouping of label + input for vehicle and OTP fields */
+#visitors-section .form__group {
+  margin-bottom: var(--size-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+#visitors-section .form__group label {
+  margin-bottom: 0.25rem;
+  font-weight: 500;                      /* or normal */
+  color: var(--base-50);                 /* muted label color */
+}
+
+/* Inputs inside the form group */
+#visitors-section .form__group input[type="text"] {
+  background-color: var(--input-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  color: var(--base-90);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Example: set focus outline or highlight */
+#visitors-section .form__group input[type="text"]:focus {
+  outline: 2px solid var(--base-40);
+}
+
+/* Just an example if you want the entire #visitors-section to gray out when disabled */
+#visitors-section.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn {
+	display: flex;
+	border-radius: var(--size-sm);
+	width: auto;
+}
+.btn svg {
+	width: 1em;
+	height: 1em;
+	margin-right: var(--size-xs);
+}
+
+.visitor-name {
+	width: 300px;
+	max-width: 300px;
+}
+#validate-otp-btn
+{
+	display: block;
+	width: 25%;
+	margin-top: 0;
+	margin-bottom: 0 !important;
+	background-color: var(--flexoki-blue-500) !important;
+	color: var(--flexoki-blue-50) !important;
+}
+
+.form__group {
+	display: flex;
+
+}
+#otp-input {
+	width: 300px;
+	font-family: var(--font-mono);
+}
+
+#visitors-section.card {
+	padding-left: var(--size-lg);
+}
+
+#visitors-section.card h2 {
+	margin-top: var(--size-xs);
+}
+
+#confirm-visitors-btn {
+	background-color: var(--flexoki-green-500) !important;
+	color: var(--flexoki-green-50) !important;
+}
+
+#vehicle-number {
+	font-family: var(--font-mono);
+	width: 400px;
+	max-width: 300px;
 }

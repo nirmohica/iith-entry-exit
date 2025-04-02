@@ -1,5 +1,3 @@
--- Shravan and Anup
-
 -- latest_accesses retrieves the top 5 records of a resident by inputting the resident ID. Function
 CREATE OR REPLACE FUNCTION latest_accesses(p_resident_id VARCHAR(20))
 RETURNS TABLE (
@@ -19,7 +17,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- add_resident_entry requires the resident ID as input. Stored Procedure
--- anup update: prevent adding resident if more than one entry
+-- update: prevent adding resident if more than one entry
 CREATE OR REPLACE PROCEDURE add_resident_entry(p_resident_id VARCHAR(20))
 LANGUAGE plpgsql
 AS $$
@@ -44,7 +42,7 @@ end;
 $$;
 
 -- add_visitor_entry requires the resident id, an array of names, and vehicle details as input. stored procedure
--- anup update: handle already existing vehicles and handle otp
+-- update: handle already existing vehicles and handle otp
 -- credits: chatgpt
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -54,7 +52,7 @@ CREATE OR REPLACE FUNCTION add_visitor_entry(
     p_visitor_names TEXT[],
     p_vehicle_number VARCHAR(20),
     p_vehicle_type VARCHAR(50),
-    p_expected_stay INTERVAL
+    p_expected_stay INTERVAL,
 )
 RETURNS TABLE (access_id INT, otp VARCHAR(50)) AS $$
 DECLARE
@@ -110,7 +108,19 @@ $$ LANGUAGE plpgsql;
 
 -- new index for fuzzy search
 CREATE extension IF NOT EXISTS pg_trgm;
-CREATE INDEX IF NOT EXISTS idx_resident_name_trgm ON resident USING GIN ((resident_name || ' ' || resident_id) gin_trgm_ops);
+
+-- index for fast lookups in searching resident (join with res_org, etc)
+CREATE INDEX IF NOT EXISTS idx_org_unit_name ON org_unit USING GIN (unit_name GIN_TRGM_OPS);
+
+-- more indices
+CREATE INDEX IF NOT EXISTS idx_resident_name_trgm_lower
+  ON resident USING GIN (lower(resident_name) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_resident_id_trgm_lower
+  ON resident USING GIN (lower(resident_id) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_unit_name_trgm_lower
+  ON org_unit USING GIN (lower(unit_name) gin_trgm_ops);
 
 create or replace function search_resident(p_input text)
 returns table (
@@ -224,7 +234,7 @@ begin
 end;
 $$;
 
--- anup: top 5 visitors for a resident id
+-- top 5 visitors for a resident id
 CREATE OR REPLACE FUNCTION top_visitors(p_resident_id text)
 RETURNS TABLE (
     visitor_name varchar(100),
@@ -242,7 +252,7 @@ BEGIN
 end;
 $$ language plpgsql;
 
--- anup: active visitors
+-- active visitors
 CREATE OR REPLACE FUNCTION active_visitors(p_resident_id VARCHAR(20))
 RETURNS TABLE (
     visitor_id INT,
@@ -263,63 +273,71 @@ END;
 $$ LANGUAGE plpgsql;
 
 
--- anup: b-tree index on resident_id
+-- b-tree index on resident_id
 CREATE INDEX IF NOT EXISTS idx_resident_id_prefix ON resident (resident_id text_pattern_ops);
 
 
--- anup: index for fast lookups in searching resident (join with res_org, etc)
+-- index for fast lookups in searching resident (join with res_org, etc)
 CREATE INDEX IF NOT EXISTS idx_org_unit_name ON org_unit USING GIN (unit_name gin_trgm_ops);
-CREATE OR REPLACE FUNCTION search_resident(p_input TEXT)
+CREATE OR REPLACE FUNCTION search_resident(p_input text)
 RETURNS TABLE (
-  name VARCHAR(100),
-    resident_id VARCHAR(20),
-    phone VARCHAR(15),
-    department VARCHAR(100)
-) AS $$
+  name varchar(100),
+  resident_id varchar(20),
+  phone varchar(15),
+  department varchar(100),
+  photo bytea
+)
+AS $$
+DECLARE
+  words text[];
 BEGIN
-    RETURN QUERY
-    WITH words AS (
-        SELECT UNNEST(STRING_TO_ARRAY(LOWER(p_input), ' ')) AS w
-    )
-    SELECT
-        r.resident_name,
-        r.resident_id,
-        r.phone,
-        o.unit_name AS department
-    FROM resident r
-    LEFT JOIN res_org ro ON r.resident_id = ro.resident_id
-    LEFT JOIN org_unit o ON ro.unit_name = o.unit_name
-    WHERE
+  IF p_input IS NULL OR trim(p_input) = '' THEN
+    RETURN;
+  END IF;
+
+  -- Split input into lower-case words
+  words := string_to_array(lower(p_input), ' ');
+
+  RETURN QUERY
+  SELECT
+    r.resident_name,
+    r.resident_id,
+    r.phone,
+    o.unit_name::varchar AS department,  -- explicit cast to varchar
+    r.photo
+  FROM resident r
+  LEFT JOIN res_org ro ON r.resident_id = ro.resident_id
+  LEFT JOIN org_unit o ON ro.unit_name = o.unit_name
+  WHERE
     (
-      -- if the entire input is short (<= 4 chars) and contains no digits,
-      -- do a simple substring search on resident_name and department.
-      (p_input !~ '[0-9]' AND LENGTH(p_input) <= 4
-         AND (LOWER(r.resident_name) ILIKE '%' || LOWER(p_input) || '%'
-              OR LOWER(o.unit_name) ILIKE '%' || LOWER(p_input) || '%')
+      -- If input is short and contains no digit, do a simple substring search.
+      (p_input !~ '[0-9]' AND length(p_input) <= 4
+         AND (
+              lower(r.resident_name) LIKE '%' || lower(p_input) || '%'
+              OR lower(o.unit_name) LIKE '%' || lower(p_input) || '%'
+         )
       )
       OR
-      -- otherwise, use word-by-word matching.
+      -- Otherwise, require each word to match at least one field.
       (
-        (SELECT COUNT(*) FROM words)
-        =
-        (SELECT COUNT(*) FROM words ww
-         WHERE
-           (
-             ww.w ~ '[0-9]'  -- if the word contains a digit, match only against resident_id
-             AND r.resident_id ILIKE '%' || ww.w || '%'
-           )
-           OR
-           (
-             ww.w !~ '[0-9]'  -- if the word contains no digit,
-             AND (
-                   r.resident_id ILIKE '%' || ww.w || '%'
-                   OR SIMILARITY(LOWER(r.resident_name), ww.w) > 0.6
-                   OR LOWER(o.unit_name) ILIKE '%' || ww.w || '%'
-                 )
-           )
+        SELECT bool_and(
+          CASE
+            WHEN w ~ '[0-9]' THEN lower(r.resident_id) LIKE '%' || w || '%'
+            ELSE
+              (
+                lower(r.resident_name) LIKE '%' || w || '%'
+                OR lower(r.resident_id) LIKE '%' || w || '%'
+                OR lower(o.unit_name) LIKE '%' || w || '%'
+                OR lower(r.resident_name) % w
+                OR lower(r.resident_id) % w
+                OR lower(o.unit_name) % w
+              )
+          END
         )
+        FROM unnest(words) AS w
       )
-    );
+    )
+  LIMIT 24;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -352,7 +370,7 @@ END;
 $$;
 
 
--- q7 - add_visitor_exit requires the resident id as input. stored procedure
+-- add_visitor_exit requires the resident id as input. stored procedure
 -- stored procedure to mark a specific visitor's exit
 CREATE OR REPLACE PROCEDURE add_visitor_exit(p_resident_id VARCHAR(20), p_visitor_id INT)
 LANGUAGE plpgsql
@@ -381,7 +399,7 @@ BEGIN
 END;
 $$;
 
--- anup: top 5 visitors for a resident id
+-- top 5 visitors for a resident id
 CREATE OR REPLACE FUNCTION top_visitors(p_resident_id TEXT)
 RETURNS TABLE (
     visitor_name VARCHAR(100),
@@ -399,7 +417,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- anup: active visitors
+-- active visitors
 CREATE OR REPLACE FUNCTION active_visitors(p_resident_id VARCHAR(20))
 RETURNS TABLE (
     visitor_id INT,
@@ -419,10 +437,48 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- cancel new visitor access (and any visitor_accesses link) if OTP fails
+CREATE OR REPLACE PROCEDURE cancel_visitor_access(p_access_id INT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Remove any visitor<->access links
+    DELETE FROM visitor_accesses WHERE access_id = p_access_id;
 
--- anup: b-tree index on resident_id
+    -- Remove the access record
+    DELETE FROM access WHERE access_id = p_access_id;
+
+    -- We do NOT remove from 'visitor', 'vehicle', or 'res_visitors'
+    -- because we want to keep the data if the visitor or vehicle existed from earlier.
+END;
+$$;
+
+
+-- b-tree index on resident_id
 CREATE INDEX IF NOT EXISTS idx_resident_id_prefix ON resident (resident_id TEXT_PATTERN_OPS);
 
 
--- anup: index for fast lookups in searching resident (join with res_org, etc)
-CREATE INDEX IF NOT EXISTS idx_org_unit_name ON org_unit USING GIN (unit_name GIN_TRGM_OPS);
+-- otp
+CREATE OR REPLACE FUNCTION validate_visitor_entry(
+    p_access_id INT,
+    p_otp VARCHAR(50)
+)
+RETURNS BOOLEAN
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    stored_otp VARCHAR(50);
+BEGIN
+    SELECT password
+      INTO stored_otp
+      FROM access
+     WHERE access_id = p_access_id
+       AND exit_time IS NULL;  -- only consider “active” access entries
+
+    IF stored_otp = p_otp THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$;

@@ -5,7 +5,7 @@ CREATE TABLE resident (
     home_address JSONB NOT NULL, -- Stores address as JSON
     email VARCHAR(100) UNIQUE NOT NULL,
     phone VARCHAR(15) UNIQUE NOT NULL,
-		photo BYTEA
+    photo BYTEA
 );
 
 -- Table for organizational units
@@ -19,22 +19,22 @@ CREATE TABLE res_org (
     resident_id VARCHAR(20) NOT NULL,
     unit_name VARCHAR(100) NOT NULL,
     PRIMARY KEY (resident_id, unit_name),
-    FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
-    FOREIGN KEY (unit_name) REFERENCES org_unit(unit_name)
+    FOREIGN KEY (resident_id) REFERENCES resident (resident_id),
+    FOREIGN KEY (unit_name) REFERENCES org_unit (unit_name)
 );
 
 -- Table for students
 CREATE TABLE student (
     resident_id VARCHAR(20) PRIMARY KEY,
     college_address VARCHAR(255),
-    FOREIGN KEY (resident_id) REFERENCES resident(resident_id)
+    FOREIGN KEY (resident_id) REFERENCES resident (resident_id)
 );
 
 -- Table for faculty
 CREATE TABLE faculty (
     resident_id VARCHAR(20) PRIMARY KEY,
     college_address VARCHAR(255),
-    FOREIGN KEY (resident_id) REFERENCES resident(resident_id)
+    FOREIGN KEY (resident_id) REFERENCES resident (resident_id)
 );
 
 -- Table for visitors
@@ -50,8 +50,8 @@ CREATE TABLE res_visitors (
     resident_id VARCHAR(20) NOT NULL,
     visitor_id INT NOT NULL,
     PRIMARY KEY (resident_id, visitor_id),
-    FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
-    FOREIGN KEY (visitor_id) REFERENCES visitor(visitor_id)
+    FOREIGN KEY (resident_id) REFERENCES resident (resident_id),
+    FOREIGN KEY (visitor_id) REFERENCES visitor (visitor_id)
 );
 
 -- Table for access logs
@@ -67,8 +67,8 @@ CREATE TABLE res_accesses (
     resident_id VARCHAR(20) NOT NULL,
     access_id INT NOT NULL,
     PRIMARY KEY (resident_id, access_id),
-    FOREIGN KEY (resident_id) REFERENCES resident(resident_id),
-    FOREIGN KEY (access_id) REFERENCES access(access_id)
+    FOREIGN KEY (resident_id) REFERENCES resident (resident_id),
+    FOREIGN KEY (access_id) REFERENCES access (access_id)
 );
 
 -- Table for linking visitors and access logs (visitor_accesses)
@@ -76,8 +76,8 @@ CREATE TABLE visitor_accesses (
     visitor_id INT NOT NULL,
     access_id INT NOT NULL,
     PRIMARY KEY (visitor_id, access_id),
-    FOREIGN KEY (visitor_id) REFERENCES visitor(visitor_id),
-    FOREIGN KEY (access_id) REFERENCES access(access_id)
+    FOREIGN KEY (visitor_id) REFERENCES visitor (visitor_id),
+    FOREIGN KEY (access_id) REFERENCES access (access_id)
 );
 
 -- Table for vehicles
@@ -85,5 +85,5 @@ CREATE TABLE vehicle (
     vehicle_number VARCHAR(20) PRIMARY KEY,
     vehicle_type VARCHAR(50),
     access_id INT NOT NULL,
-    FOREIGN KEY (access_id) REFERENCES access(access_id)
+    FOREIGN KEY (access_id) REFERENCES access (access_id)
 );

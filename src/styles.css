@@ -314,9 +314,10 @@ template {
   --color-bg-primary: var(--base-00);
   --input-bg-primary: var(--base-05);
   --color-bg-secondary: var(--base-10);
-  --color-border-primary: var(--base-10);
-  --color-tx-muted: var(--base-30);
+  --color-border-primary: var(--base-30);
+  --color-tx-muted: var(--base-40);
   --font-default: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", "DejaVu Sans Mono", "Liberation Mono", Menlo, Monaco, "Consolas", "Source Code Pro", monospace;
 }
 
 @media (prefers-color-scheme: light) {
@@ -324,7 +325,56 @@ template {
     --base-00: var(--flexoki-paper);
     --base-05: var(--flexoki-50);
     --base-10: var(--flexoki-100);
-    --base-10: var(--flexoki-100);
+    --base-15: var(--flexoki-150);
+    --base-20: var(--flexoki-200);
+    --base-30: var(--flexoki-300);
+    --base-40: var(--flexoki-400);
+    --base-50: var(--flexoki-500);
+    --base-60: var(--flexoki-600);
+    --base-70: var(--flexoki-700);
+    --base-80: var(--flexoki-800);
+    --base-85: var(--flexoki-850);
+    --base-90: var(--flexoki-900);
+    --base-95: var(--flexoki-950);
+    --info-05: var(--flexoki-yellow-50);
+    --info-10: var(--flexoki-yellow-100);
+    --info-15: var(--flexoki-yellow-150);
+    --info-20: var(--flexoki-yellow-200);
+    --info-30: var(--flexoki-yellow-300);
+    --info-40: var(--flexoki-yellow-400);
+    --info-50: var(--flexoki-yellow-500);
+    --info-60: var(--flexoki-yellow-600);
+    --info-70: var(--flexoki-yellow-700);
+    --info-80: var(--flexoki-yellow-800);
+    --info-85: var(--flexoki-yellow-850);
+    --info-90: var(--flexoki-yellow-900);
+    --info-95: var(--flexoki-yellow-950);
+    --success-05: var(--flexoki-green-50);
+    --success-10: var(--flexoki-green-100);
+    --success-15: var(--flexoki-green-150);
+    --success-20: var(--flexoki-green-200);
+    --success-30: var(--flexoki-green-300);
+    --success-40: var(--flexoki-green-400);
+    --success-50: var(--flexoki-green-500);
+    --success-60: var(--flexoki-green-600);
+    --success-70: var(--flexoki-green-700);
+    --success-80: var(--flexoki-green-800);
+    --success-85: var(--flexoki-green-850);
+    --success-90: var(--flexoki-green-900);
+    --success-95: var(--flexoki-green-950);
+    --error-05: var(--flexoki-red-50);
+    --error-10: var(--flexoki-red-100);
+    --error-15: var(--flexoki-red-150);
+    --error-20: var(--flexoki-red-200);
+    --error-30: var(--flexoki-red-300);
+    --error-40: var(--flexoki-red-400);
+    --error-50: var(--flexoki-red-500);
+    --error-60: var(--flexoki-red-600);
+    --error-70: var(--flexoki-red-700);
+    --error-80: var(--flexoki-red-800);
+    --error-85: var(--flexoki-red-850);
+    --error-90: var(--flexoki-red-900);
+    --error-95: var(--flexoki-red-950);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -381,6 +431,8 @@ template {
   --flexoki-red-200: #F89A8A;
   --flexoki-red-300: #E8705F;
   --flexoki-red-400: #D14D41;
+  --flexoki-red-400-40: rgba(209, 77, 65, 0.4);
+  --flexoki-red-400-20: rgba(209, 77, 65, 0.2);
   --flexoki-red-500: #C03E35;
   --flexoki-red-600: #AF3029;
   --flexoki-red-700: #942822;
@@ -407,6 +459,8 @@ template {
   --flexoki-yellow-200: #ECCB60;
   --flexoki-yellow-300: #DFB431;
   --flexoki-yellow-400: #D0A215;
+  --flexoki-yellow-400-20: rgba(81.6%, 63.5%, 8.24%, 20%);
+  --flexoki-yellow-400-40: rgba(81.6%, 63.5%, 8.24%, 20%);
   --flexoki-yellow-500: #BE9207;
   --flexoki-yellow-600: #AD8301;
   --flexoki-yellow-700: #8E6B01;
@@ -421,6 +475,8 @@ template {
   --flexoki-green-300: #A0AF54;
   --flexoki-green-400: #879A39;
   --flexoki-green-500: #768D21;
+  --flexoki-green-500-20: #768d2154;
+  --flexoki-green-500-40: #768d2154;
   --flexoki-green-600: #66800B;
   --flexoki-green-700: #536907;
   --flexoki-green-800: #3D4C07;
@@ -434,6 +490,8 @@ template {
   --flexoki-cyan-300: #5ABDAC;
   --flexoki-cyan-400: #3AA99F;
   --flexoki-cyan-500: #2F968D;
+  --flexoki-cyan-500-40: rgba(18.4%, 58.8%, 55.3%, 0.4);
+  --flexoki-cyan-500-20: rgba(18.4%, 58.8%, 55.3%, 0.2);
   --flexoki-cyan-600: #24837B;
   --flexoki-cyan-700: #1C6C66;
   --flexoki-cyan-800: #164F4A;
@@ -1007,18 +1065,27 @@ input {
   padding: var(--size-xs);
   width: 100%;
   border-radius: var(--size-xs);
-  border: 2px solid var(--color-border-primary);
+  border: 1px solid var(--color-border-primary);
 }
 
-.profile-info {
-  background: var(--color-bg-secondary);
-  padding: var(--size-xl);
+.profile-info, .card {
+  background: var(--base-05);
+  padding: var(--size-md);
+  border: 1px solid var(--base-15);
+  margin-top: var(--size-md);
 }
 
 img.profile-info__photo {
-  max-height: calc(var(--size-2xl) * var(--step-whole) * var(--step-whole) * var(--step-whole));
+  min-height: calc(var(--size-2xl) * var(--step-whole) * var(--step-whole) * var(--step-half));
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: var(--size-sm);
+  border: 1px solid var(--base-15);
+}
+
+.profile-info__details {
+  margin-bottom: 2.2652em;
 }
 
 .card {
@@ -1041,6 +1108,523 @@ img.profile-info__photo {
     --base-30: red !important;
   }
 }
+ul.dropdown {
+  background-color: var(--flexoki-200);
+}
+
+/* Container that holds the input and the dropdown */
+.header-search-container {
+  position: relative; /* so the .dropdown can be absolutely positioned inside it */
+  width: 100%; /* adjust as needed */
+  margin: 0 auto; /* center horizontally if you like */
+}
+
+/* The search input and icon side by side */
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: var(--size-md);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--base-05);
+}
+
+.search-input-wrapper .icon {
+  margin-right: 0.5rem;
+  width: 1.1em; /* icon size can be scaled */
+  height: 1.1em;
+  color: var(--base-40); /* icon color */
+}
+
+.search-input-wrapper {
+  /* Default: no outline, smooth transition */
+  outline: 1.21px solid var(--base-20);
+  transition: outline 0.1s ease-in;
+}
+
+/* When hovering anywhere in .search-input-wrapper (including the input),
+   show a 1px red outline. */
+.search-input-wrapper:hover {
+  outline: 1px solid var(--base-40);
+}
+
+/* When a child input is focused (active), increase the red outline to 2px. */
+.search-input-wrapper:focus-within {
+  outline: 1.6px solid var(--base-30);
+}
+
+.search-input-wrapper > svg {
+  color: var(--base-50);
+  width: 20px;
+  height: 20px;
+}
+
+/* The actual text field */
+#search-input {
+  border: none;
+  outline: none;
+  flex: 1; /* takes remaining space */
+  font-size: 1rem;
+}
+
+/* The dropdown list */
+.dropdown {
+  position: absolute;
+  top: 100%; /* just below the wrapper */
+  left: 0;
+  right: 0; /* stretch full width of container */
+  margin-top: 0.25rem;
+  background-color: red;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 999; /* on top of everything */
+}
+
+.dropdown.show {
+  max-height: 500px; /* allow up to 500px of items (adjust as needed) */
+  opacity: 1;
+}
+
+/* Hide it completely if .hidden is present */
+.dropdown.hidden {
+  display: none;
+}
+
+/* Remove default list bullets */
+.dropdown li {
+  list-style-type: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* On hover */
+.dropdown li:hover {
+  background-color: var(--base-10);
+  outline: 1px solid var(--base-15);
+  border-radius: var(--size-xs);
+  color: var(--base-95);
+  cursor: pointer;
+}
+
+/* Title + Subtitle style inside each li (like GitHub style) */
+.dropdown li .title {
+  font-weight: 600;
+  color: var(--base-95);
+  margin-bottom: 2px;
+}
+
+.dropdown li .subtitle {
+  font-size: 0.85rem;
+  color: var(--base-50);
+}
+
+#search-results {
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: var(--base-05);
+  border-radius: var(--size-sm);
+  border: 1px solid var(--base-15);
+  padding: var(--size-md);
+  margin-top: var(--size-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown {
+  max-height: 240px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between image & text */
+  padding: 0.5rem 0.75rem;
+  list-style: none;
+}
+
+/* The photo is a small thumbnail */
+.dropdown li .thumb {
+  width: 32px;
+  height: 32px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+:root {
+  color-scheme: light dark;
+  --color-bg-primary: var(--base-00);
+  --input-bg-primary: var(--base-05);
+  --color-bg-secondary: var(--base-10);
+  --color-border-primary: var(--base-30);
+  --color-tx-muted: var(--base-40);
+  --font-default: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", "IBM Plex Mono", "Roboto Mono", "DejaVu Sans Mono", "Liberation Mono", Menlo, Monaco, "Consolas", "Source Code Pro", monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --base-00: var(--flexoki-paper);
+    --base-05: var(--flexoki-50);
+    --base-10: var(--flexoki-100);
+    --base-15: var(--flexoki-150);
+    --base-20: var(--flexoki-200);
+    --base-30: var(--flexoki-300);
+    --base-40: var(--flexoki-400);
+    --base-50: var(--flexoki-500);
+    --base-60: var(--flexoki-600);
+    --base-70: var(--flexoki-700);
+    --base-80: var(--flexoki-800);
+    --base-85: var(--flexoki-850);
+    --base-90: var(--flexoki-900);
+    --base-95: var(--flexoki-950);
+    --info-05: var(--flexoki-yellow-50);
+    --info-10: var(--flexoki-yellow-100);
+    --info-15: var(--flexoki-yellow-150);
+    --info-20: var(--flexoki-yellow-200);
+    --info-30: var(--flexoki-yellow-300);
+    --info-40: var(--flexoki-yellow-400);
+    --info-50: var(--flexoki-yellow-500);
+    --info-60: var(--flexoki-yellow-600);
+    --info-70: var(--flexoki-yellow-700);
+    --info-80: var(--flexoki-yellow-800);
+    --info-85: var(--flexoki-yellow-850);
+    --info-90: var(--flexoki-yellow-900);
+    --info-95: var(--flexoki-yellow-950);
+    --success-05: var(--flexoki-green-50);
+    --success-10: var(--flexoki-green-100);
+    --success-15: var(--flexoki-green-150);
+    --success-20: var(--flexoki-green-200);
+    --success-30: var(--flexoki-green-300);
+    --success-40: var(--flexoki-green-400);
+    --success-50: var(--flexoki-green-500);
+    --success-60: var(--flexoki-green-600);
+    --success-70: var(--flexoki-green-700);
+    --success-80: var(--flexoki-green-800);
+    --success-85: var(--flexoki-green-850);
+    --success-90: var(--flexoki-green-900);
+    --success-95: var(--flexoki-green-950);
+    --error-05: var(--flexoki-red-50);
+    --error-10: var(--flexoki-red-100);
+    --error-15: var(--flexoki-red-150);
+    --error-20: var(--flexoki-red-200);
+    --error-30: var(--flexoki-red-300);
+    --error-40: var(--flexoki-red-400);
+    --error-50: var(--flexoki-red-500);
+    --error-60: var(--flexoki-red-600);
+    --error-70: var(--flexoki-red-700);
+    --error-80: var(--flexoki-red-800);
+    --error-85: var(--flexoki-red-850);
+    --error-90: var(--flexoki-red-900);
+    --error-95: var(--flexoki-red-950);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base-00: var(--flexoki-black);
+    --base-05: var(--flexoki-950);
+    --base-10: var(--flexoki-900);
+    --base-30: var(--flexoki-700);
+  }
+}
+:root {
+  font-size: 1rem;
+  /* size variables */
+  --size-md: 1em;
+  --size-factor: 1.618;
+  --size-sm: calc(var(--size-md) / var(--size-factor));
+  --size-xs: calc(var(--size-sm) / var(--size-factor));
+  --size-2xs: calc(var(--size-xs) / var(--size-factor));
+  --size-lg: calc(var(--size-md) * var(--size-factor));
+  --size-xl: calc(var(--size-lg) * var(--size-factor));
+  --size-2xl: calc(var(--size-xl) * var(--size-factor));
+  /* increments */
+  --step-whole: 1.618;
+  --step-half: 1.272;
+  --step-quarter: 1.128;
+  --step-eighth: 1.061;
+  --step-whole-dec: 0.618;
+  --step-half-dec: 0.272;
+  --step-quarter-dec: 0.128;
+  --step-eighth-dec: 0.061;
+  /* make text look sharper */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  /* flexoki */
+  --flexoki-black: #100F0F;
+  --flexoki-paper: #FFFCF0;
+  --flexoki-50: #F2F0E5;
+  --flexoki-100: #E6E4D9;
+  --flexoki-150: #DAD8CE;
+  --flexoki-200: #CECDC3;
+  --flexoki-300: #B7B5AC;
+  --flexoki-400: #9F9D96;
+  --flexoki-500: #878580;
+  --flexoki-600: #6F6E69;
+  --flexoki-700: #575653;
+  --flexoki-800: #403E3C;
+  --flexoki-850: #343331;
+  --flexoki-900: #282726;
+  --flexoki-950: #1C1B1A;
+  --flexoki-red-50: #FFE1D5;
+  --flexoki-red-100: #FFCABB;
+  --flexoki-red-150: #FDB2A2;
+  --flexoki-red-200: #F89A8A;
+  --flexoki-red-300: #E8705F;
+  --flexoki-red-400: #D14D41;
+  --flexoki-red-400-40: rgba(209, 77, 65, 0.4);
+  --flexoki-red-400-20: rgba(209, 77, 65, 0.2);
+  --flexoki-red-500: #C03E35;
+  --flexoki-red-600: #AF3029;
+  --flexoki-red-700: #942822;
+  --flexoki-red-800: #6C201C;
+  --flexoki-red-850: #551B18;
+  --flexoki-red-900: #3E1715;
+  --flexoki-red-950: #261312;
+  --flexoki-orange-50: #FFE7CE;
+  --flexoki-orange-100: #FED3AF;
+  --flexoki-orange-150: #FCC192;
+  --flexoki-orange-200: #F9AE77;
+  --flexoki-orange-300: #EC8B49;
+  --flexoki-orange-400: #DA702C;
+  --flexoki-orange-500: #CB6120;
+  --flexoki-orange-600: #BC5215;
+  --flexoki-orange-700: #9D4310;
+  --flexoki-orange-800: #71320D;
+  --flexoki-orange-850: #59290D;
+  --flexoki-orange-900: #40200D;
+  --flexoki-orange-950: #27180E;
+  --flexoki-yellow-50: #FAEEC6;
+  --flexoki-yellow-100: #F6E2A0;
+  --flexoki-yellow-150: #F1D67E;
+  --flexoki-yellow-200: #ECCB60;
+  --flexoki-yellow-300: #DFB431;
+  --flexoki-yellow-400: #D0A215;
+  --flexoki-yellow-400-20: rgba(81.6%, 63.5%, 8.24%, 20%);
+  --flexoki-yellow-400-40: rgba(81.6%, 63.5%, 8.24%, 20%);
+  --flexoki-yellow-500: #BE9207;
+  --flexoki-yellow-600: #AD8301;
+  --flexoki-yellow-700: #8E6B01;
+  --flexoki-yellow-800: #664D01;
+  --flexoki-yellow-850: #503D02;
+  --flexoki-yellow-900: #3A2D04;
+  --flexoki-yellow-950: #241E08;
+  --flexoki-green-50: #EDEECF;
+  --flexoki-green-100: #DDE2B2;
+  --flexoki-green-150: #CDD597;
+  --flexoki-green-200: #BEC97E;
+  --flexoki-green-300: #A0AF54;
+  --flexoki-green-400: #879A39;
+  --flexoki-green-500: #768D21;
+  --flexoki-green-500-20: #768d2154;
+  --flexoki-green-500-40: #768d2154;
+  --flexoki-green-600: #66800B;
+  --flexoki-green-700: #536907;
+  --flexoki-green-800: #3D4C07;
+  --flexoki-green-850: #313D07;
+  --flexoki-green-900: #252D09;
+  --flexoki-green-950: #1A1E0C;
+  --flexoki-cyan-50: #DDF1E4;
+  --flexoki-cyan-100: #BFE8D9;
+  --flexoki-cyan-150: #A2DECE;
+  --flexoki-cyan-200: #87D3C3;
+  --flexoki-cyan-300: #5ABDAC;
+  --flexoki-cyan-400: #3AA99F;
+  --flexoki-cyan-500: #2F968D;
+  --flexoki-cyan-500-40: rgba(18.4%, 58.8%, 55.3%, 0.4);
+  --flexoki-cyan-500-20: rgba(18.4%, 58.8%, 55.3%, 0.2);
+  --flexoki-cyan-600: #24837B;
+  --flexoki-cyan-700: #1C6C66;
+  --flexoki-cyan-800: #164F4A;
+  --flexoki-cyan-850: #143F3C;
+  --flexoki-cyan-900: #122F2C;
+  --flexoki-cyan-950: #101F1D;
+  --flexoki-blue-50: #E1ECEB;
+  --flexoki-blue-100: #C6DDE8;
+  --flexoki-blue-150: #ABCFE2;
+  --flexoki-blue-200: #92BFDB;
+  --flexoki-blue-300: #66A0C8;
+  --flexoki-blue-400: #4385BE;
+  --flexoki-blue-500: #3171B2;
+  --flexoki-blue-600: #205EA6;
+  --flexoki-blue-700: #1A4F8C;
+  --flexoki-blue-800: #163B66;
+  --flexoki-blue-850: #133051;
+  --flexoki-blue-900: #12253B;
+  --flexoki-blue-950: #101A24;
+  --flexoki-purple-50: #F0EAEC;
+  --flexoki-purple-100: #E2D9E9;
+  --flexoki-purple-150: #D3CAE6;
+  --flexoki-purple-200: #C4B9E0;
+  --flexoki-purple-300: #A699D0;
+  --flexoki-purple-400: #8B7EC8;
+  --flexoki-purple-500: #735EB5;
+  --flexoki-purple-600: #5E409D;
+  --flexoki-purple-700: #4F3685;
+  --flexoki-purple-800: #3C2A62;
+  --flexoki-purple-850: #31234E;
+  --flexoki-purple-900: #261C39;
+  --flexoki-purple-950: #1A1623;
+  --flexoki-magenta-50: #FEE4E5;
+  --flexoki-magenta-100: #FCCFDA;
+  --flexoki-magenta-150: #F9B9CF;
+  --flexoki-magenta-200: #F4A4C2;
+  --flexoki-magenta-300: #E47DA8;
+  --flexoki-magenta-400: #CE5D97;
+  --flexoki-magenta-500: #B74583;
+  --flexoki-magenta-600: #A02F6F;
+  --flexoki-magenta-700: #87285E;
+  --flexoki-magenta-800: #641F46;
+  --flexoki-magenta-850: #4F1B39;
+  --flexoki-magenta-900: #39172B;
+  --flexoki-magenta-950: #24131D;
+}
+
+.title-b {
+  --line-height-ems: calc(1em * var(--step-half));
+  --size-md: calc(var(--line-height-ems) * var(--step-whole-dec));
+  --size-sm: calc(var(--line-height-ems) * var(--step-half-dec));
+  --size-xs: calc(var(--line-height-ems) * var(--step-quarter-dec));
+  --size-2xs: calc(var(--line-height-ems) * var(--step-eighth-dec));
+  --size-lg: calc(var(--line-height-ems) * var(--step-whole));
+  --size-xl: calc(var(--size-lg) * var(--step-whole));
+  --size-2xl: calc(var(--size-xl) * var(--step-whole));
+  letter-spacing: -0.02em;
+}
+
+.font-title-b, .title-b h2 {
+  font-size: calc(1em * var(--step-whole));
+  font-weight: 500;
+  line-height: var(--step-half);
+}
+
+.table td {
+  padding: var(--size-sm);
+  color: var(--base-90);
+  font-family: var(--font-mono);
+}
+
+.table {
+  background-color: var(--base-10);
+  padding: var(--size-md);
+  border-radius: var(--size-sm);
+  border: 1px solid var(--base-20);
+}
+
+.table th {
+  color: var(--base-95);
+  padding: var(--size-sm);
+  text-align: left;
+  font-size: 111%;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.w100 {
+  width: 100%;
+}
+
+#profile-info.success-glow td {
+  color: var(--success-90);
+}
+
+#profile-info.success-glow table {
+  background-color: var(--success-10);
+  border: 1px solid var(--success-20);
+}
+
+#profile-info.success-glow th {
+  color: var(--success-95);
+}
+
+#profile-info.info-glow td {
+  color: var(--info-90);
+}
+
+#profile-info.info-glow table {
+  background-color: var(--info-10);
+  border: 1px solid var(--info-20);
+}
+
+#profile-info.info-glow th {
+  color: var(--info-95);
+}
+
+.notification .msg-text {
+  margin-left: 0.5rem;
+}
+
+.notification svg {
+  width: 1em;
+  height: 1em;
+}
+
+.notification {
+  /* Put it at the bottom, centered horizontally */
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  /* Basic styling */
+  min-width: 200px;
+  max-width: 80vw;
+  background: #444;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--size-md);
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  /* By default hidden; we show it in JS */
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show it by toggling display in JS, or adding a class if you prefer */
+.notification.show {
+  display: flex;
+  opacity: 1;
+}
+.notification.show * {
+  line-height: 0.9;
+}
+
+.notification.error-notification {
+  background-color: var(--error-50); /* red-ish */
+}
+.notification.error-notification * {
+  color: var(--error-05);
+}
+
+.notification.success-notification {
+  background-color: var(--success-50);
+}
+.notification.success-notification * {
+  color: var(--success-05);
+}
+
+.notification.info-notification {
+  background-color: var(--info-50); /* blue-ish */
+}
+.notification.info-notification * {
+  color: var(--success-05);
+}
+
+/* We'll set .fade-out to reduce opacity to 0 */
+.notification.fade-out {
+  opacity: 0;
+}
+
 * {
   box-sizing: border-box;
   font-family: var(--font-default);
@@ -1053,7 +1637,7 @@ html {
 body {
   font-size: 1rem;
   background-color: var(--color-bg-primary);
-  max-width: 1200px;
+  max-width: 1320px;
   margin: auto;
   padding: 0 10%;
 }
@@ -1063,6 +1647,7 @@ body {
   content: " · "; /* Middle dot separator */
   margin: 0 3px; /* Adjust spacing as needed */
   color: var(--color-tx-muted); /* Match text color */
+  font-size: 130%;
 }
 
 /* align */
@@ -1090,7 +1675,7 @@ body {
 /* grid */
 .flex, .flex {
   display: flex;
-  gap: var(--wholestep);
+  gap: var(--size-lg);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
 }
@@ -1102,4 +1687,326 @@ body {
 
 .flex-evenly, .fe {
   justify-content: space-between;
+}
+
+.flex-start, .fs {
+  justify-content: flex-start;
+}
+
+#visitors-container .visitor-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#visitors-container .visitor-row input,
+#visitors-container .visitor-row select {
+  flex: 1;
+}
+
+#visitors-container .remove-visitor {
+  cursor: pointer;
+  color: #d33;
+}
+
+.highlight {
+  background-color: var(--base-10);
+  outline: 1px solid var(--base-15);
+  border-radius: var(--size-xs);
+  color: var(--base-95);
+  cursor: pointer;
+}
+
+.pb-sm {
+  padding-bottom: var(--size-sm);
+}
+
+.mb-sm {
+  margin-bottom: var(--size-sm);
+}
+
+.mt-sm {
+  margin-top: var(--size-sm);
+}
+
+.mt-md {
+  margin-top: var(--size-md);
+}
+
+.mb-md {
+  margin-bottom: var(--size-md);
+}
+
+.mt-lg {
+  margin-top: var(--size-lg);
+}
+
+.mt-xl {
+  margin-top: var(--size-xl);
+}
+
+.mt-2xl {
+  margin-top: var(--size-2xl);
+}
+
+/* Make the visitors list have a bit of spacing at the bottom */
+#visitors-list {
+  margin-top: 1rem;
+}
+
+/* Each row is displayed horizontally with some spacing */
+.visitor-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem; /* space between rows */
+}
+
+/* The two text inputs share row space */
+.visitor-name, .visitor-address {
+  flex: 1;
+  margin-right: 0.5rem;
+  padding: 0.4rem;
+}
+
+/* The remove button at the right */
+.remove-visitor-btn {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.remove-visitor-btn:hover {
+  background-color: #eee;
+}
+
+#profile-info {
+  z-index: -1;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Example: success (cyan) */
+#profile-info.success-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-green-500-20);
+  border: 1.21px solid var(--success-40);
+  background-color: var(--success-05); /* or var(--flexoki-cyan-05) if you prefer */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Example: error (red) */
+#profile-info.error-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-red-400-40);
+  border: 2px solid var(--flexoki-red-400);
+  background-color: var(--error-05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#profile-info.info-glow {
+  position: relative;
+  box-shadow: 0 0 100px var(--flexoki-yellow-400-20);
+  border: 1.21px solid var(--flexoki-yellow-400);
+  background-color: var(--info-05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#profile-info.success-glow h2 {
+  color: var(--flexoki-cyan-900) !important; /* or some complementary color */
+}
+
+#profile-info.success-glow span {
+  color: var(--flexoki-cyan-850) !important; /* or some complementary color */
+}
+
+#profile-info.info-glow h2 {
+  color: var(--info-90) !important; /* or some complementary color */
+}
+
+#profile-info.info-glow span {
+  color: var(--flexoki-yello-850) !important; /* or some complementary color */
+}
+
+/* A “grayed out” style – you can refine the look. */
+#visitors-section.disabled {
+  opacity: 0.5;
+  pointer-events: none; /* prevents clicks on all child elements */
+}
+
+.visitor-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Make input narrower, or as you prefer */
+.visitor-name,
+.visitor-address {
+  flex: 1;
+  margin-right: 0.5rem;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.remove-visitor-btn {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-visitor-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.profile-info-secondary {
+  color: var(--base-70);
+}
+
+h2 {
+  margin-bottom: 12px;
+}
+
+h2 {
+  letter-spacing: -0.022em;
+}
+
+h3 {
+  letter-spacing: -0.022em;
+}
+
+#resident-roll {
+  font-family: var(--font-mono);
+}
+
+/* The visitors card styling */
+#visitors-section.card {
+  background-color: var(--base-05); /* light background */
+  border: 1px solid var(--base-10); /* subtle border */
+  padding: var(--size-md); /* spacing from your scale */
+  margin-bottom: var(--size-md);
+  color: var(--base-90); /* main text color */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Header inside the card */
+#visitors-section.card > h2 {
+  font-size: calc(1em * var(--step-whole));
+  margin-bottom: var(--size-sm);
+}
+
+/* The "Add Visitor", "Confirm Entry", "Cancel" buttons, etc. */
+#visitors-section .btn {
+  background-color: var(--base-10);
+  color: var(--base-90);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  margin-right: 0.5rem; /* spacing between buttons */
+  margin-bottom: 0.75rem; /* optional spacing below each button */
+}
+
+#visitors-section .btn:hover {
+  background-color: var(--base-30);
+}
+
+/* Hide element with the .hidden class */
+#visitors-section .hidden {
+  display: none;
+}
+
+/* The grouping of label + input for vehicle and OTP fields */
+#visitors-section .form__group {
+  margin-bottom: var(--size-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+#visitors-section .form__group label {
+  margin-bottom: 0.25rem;
+  font-weight: 500; /* or normal */
+  color: var(--base-50); /* muted label color */
+}
+
+/* Inputs inside the form group */
+#visitors-section .form__group input[type=text] {
+  background-color: var(--input-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  color: var(--base-90);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Example: set focus outline or highlight */
+#visitors-section .form__group input[type=text]:focus {
+  outline: 2px solid var(--base-40);
+}
+
+/* Just an example if you want the entire #visitors-section to gray out when disabled */
+#visitors-section.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn {
+  display: flex;
+  border-radius: var(--size-sm);
+  width: auto;
+}
+
+.btn svg {
+  width: 1em;
+  height: 1em;
+  margin-right: var(--size-xs);
+}
+
+.visitor-name {
+  width: 300px;
+  max-width: 300px;
+}
+
+#validate-otp-btn {
+  display: block;
+  width: 25%;
+  margin-top: 0;
+  margin-bottom: 0 !important;
+  background-color: var(--flexoki-blue-500) !important;
+  color: var(--flexoki-blue-50) !important;
+}
+
+.form__group {
+  display: flex;
+}
+
+#otp-input {
+  width: 300px;
+  font-family: var(--font-mono);
+}
+
+#visitors-section.card {
+  padding-left: var(--size-lg);
+}
+
+#visitors-section.card h2 {
+  margin-top: var(--size-xs);
+}
+
+#confirm-visitors-btn {
+  background-color: var(--flexoki-green-500) !important;
+  color: var(--flexoki-green-50) !important;
+}
+
+#vehicle-number {
+  font-family: var(--font-mono);
+  width: 400px;
+  max-width: 300px;
 }/*# sourceMappingURL=styles.css.map */

@@ -1,9 +1,18 @@
-.profile-info {
-	background: var(--color-bg-secondary);
-	padding: var(--size-xl);
+.profile-info, .card {
+	background: var(--base-05);
+	padding: var(--size-md);
+	border: 1px solid var(--base-15);
+	margin-top: var(--size-md);
 }
 
 img.profile-info__photo {
-	max-height: calc(var(--size-2xl)*var(--step-whole)*var(--step-whole)*var(--step-whole));
+	min-height: calc(var(--size-2xl)*var(--step-whole)*var(--step-whole)*var(--step-half));
+	height: 400px;
 	object-fit: cover;
+	border-radius: var(--size-sm);
+	border: 1px solid var(--base-15);
+}
+
+.profile-info__details {
+	margin-bottom: calc(calc(1em * 1.618) * 1.4);
 }
