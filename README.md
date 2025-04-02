@@ -1,13 +1,11 @@
-# 🛂 Gate Access System
+# Gate Access System
 
 A web-based visitor entry/exit system for gated premises, developed because walking to the gate every time a visitor shows up is a slow descent into madness. This project includes OTP validation, access logging, and basic UI to replace your building’s deeply trusting and totally ineffective logbook.
 
 > “Secure by design. Ignored by institutions.”
 
-![Screenshot 1](/assets/screenshot_1.jpeg)
-![Screenshot 2](/assets/screenshot_2.jpeg)
-![Screenshot 3](/assets/screenshot_3.jpeg)
-![Screenshot 4](/assets/screenshot_4.jpeg)
+![Screenshot 1](/assets/screenshot_1.jpeg) ![Screenshot 2](/assets/screenshot_2.jpeg)
+![Screenshot 3](/assets/screenshot_3.jpeg) ![Screenshot 4](/assets/screenshot_4.jpeg)
 
 ---
 
@@ -87,22 +85,21 @@ npm run dev
 ```
 ⸻
 
-🤡 Known Issues
-	•	Nobody uses it.
-	•	Authority figures have opinions.
-	•	You might care too much.
+### 🤡 Known Issues
 
-⸻
+- Nobody uses it.
+- Authority figures have opinions.
+- You might care too much.
 
-💡 Future Improvements
-	•	Face recognition (but make it ethical)
-	•	Proper role-based access control
-	•	Visitor QR codes
-	•	Dark mode that actually saves your soul
+### Possible Improvements
 
-⸻
+- Face recognition (but make it ethical)
+- Proper role-based access control
+- Visitor QR codes
+- Dark mode that actually saves your soul
 
-🪦 Final Thoughts
+
+### 🪦 Final Thoughts
 
 This system was built with love, frustration, and a tragic understanding that the best ideas are sometimes killed by committee. If you’re reading this and actually want to use it—thank you.
 
@@ -110,7 +107,7 @@ If you’re reading this and plan to suggest a “more scalable blockchain-based
 
 ⸻
 
-🧍‍♂️ Author
+### Author
 
 ~~ChatGPT~~ Anup Chavan
 Resident of: The Gate That Should Have Been Smarter
