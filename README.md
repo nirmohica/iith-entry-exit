@@ -4,20 +4,21 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 > “Secure by design. Ignored by institutions.”
 
-<p align="center">
-  <img alt="Light" src="/assets/screenshot_1.jpeg" width="48%">
-&nbsp;
-  <img alt="Dark" src="/assets/screenshot_2.jpeg" width="48%">
-</p>
+### Screenshots
+
+<img src="/assets/screenshot_1.jpeg" width="100%">
 
 <p align="center">
-  <img alt="Light" src="/assets/screenshot_3.jpeg" width="48%">
+  <img src="/assets/screenshot_2.jpeg" width="48%">
 &nbsp;
-  <img alt="Dark" src="/assets/screenshot_4.jpeg" width="48%">
+  <img src="/assets/screenshot_3.jpeg" width="48%">
+&nbsp;
+  <img src="/assets/screenshot_4.jpeg" width="48%">
 </p>
+
 ---
 
-## ✨ Features
+## Features
 
 - Resident entry/exit tracking
 - Visitor entry with OTP-based validation
@@ -28,7 +29,7 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 ---
 
-## 🏗 Tech Stack
+## Tech Stack
 
 | Layer        | Tech             |
 |--------------|------------------|
@@ -39,7 +40,7 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 .
@@ -51,7 +52,7 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone this glorious pile of effort:
 
