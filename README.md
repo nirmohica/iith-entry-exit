@@ -6,11 +6,9 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 
 ### Screenshots
 
-<img src="/assets/screenshot_1.jpeg" width="100%">
+<img src="/assets/screenshot_2.jpeg" width="100%">
 
 <p align="center">
-  <img src="/assets/screenshot_2.jpeg" width="48%">
-&nbsp;
   <img src="/assets/screenshot_3.jpeg" width="48%">
 &nbsp;
   <img src="/assets/screenshot_4.jpeg" width="48%">
