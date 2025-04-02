@@ -5,15 +5,15 @@ A web-based visitor entry/exit system for gated premises, developed because walk
 > “Secure by design. Ignored by institutions.”
 
 <p align="center">
-  <img alt="Light" src="/assets/screenshot_1.jpeg" width="45%">
-&nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="/assets/screenshot_2.jpeg" width="45%">
+  <img alt="Light" src="/assets/screenshot_1.jpeg" width="48%">
+&nbsp;
+  <img alt="Dark" src="/assets/screenshot_2.jpeg" width="48%">
 </p>
 
 <p align="center">
-  <img alt="Light" src="/assets/screenshot_3.jpeg" width="45%">
-&nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark" src="/assets/screenshot_4.jpeg" width="45%">
+  <img alt="Light" src="/assets/screenshot_3.jpeg" width="48%">
+&nbsp;
+  <img alt="Dark" src="/assets/screenshot_4.jpeg" width="48%">
 </p>
 ---
 
@@ -91,7 +91,7 @@ psql -U your_user -d gateAccess -f seed.sql
 ```
 npm run dev
 ```
-⸻
+---
 
 ### 🤡 Known Issues
 
@@ -113,7 +113,7 @@ This system was built with love, frustration, and a tragic understanding that th
 
 If you’re reading this and plan to suggest a “more scalable blockchain-based solution,” please close the tab.
 
-⸻
+---
 
 ### Author
 
